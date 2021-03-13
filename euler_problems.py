@@ -6,6 +6,7 @@ import pytest
 from typing import List, Tuple
 from tqdm import tqdm
 from math import sqrt, prod
+import assets
 
 
 def prime_factors(n: int) -> List[int]:
@@ -74,67 +75,36 @@ def problem_16(power: int) -> int:
     return digit_sum
 
 
-DIGIT_NAMES = {
-    "1": "one",
-    "2": "two",
-    "3": "three",
-    "4": "four",
-    "5": "five",
-    "6": "six",
-    "7": "seven",
-    "8": "eight",
-    "9": "nine",
-}
-TEEN_NAMES = {
-    "0": "ten",
-    "1": "eleven",
-    "2": "twelve",
-    "3": "thirteen",
-    "4": "fourteen",
-    "5": "fifteen",
-    "6": "sixteen",
-    "7": "seventeen",
-    "8": "eighteen",
-    "9": "nineteen",
-}
-DECILE_NAMES = {
-    "2": "twenty",
-    "3": "thirty",
-    "4": "forty",
-    "5": "fifty",
-    "6": "sixty",
-    "7": "seventy",
-    "8": "eighty",
-    "9": "ninety",
-}
-
-
 def get_single_fig_name(string: str) -> str:
-    return DIGIT_NAMES[string]
+    return assets.DIGIT_NAMES[string]
 
 
 def get_double_fig_name(string_1: str, string_2: str) -> str:
     if string_1 == "1":
-        number_string = TEEN_NAMES[string_2]
+        number_string = assets.TEEN_NAMES[string_2]
     else:
         if string_2 == "0":
-            number_string = DECILE_NAMES[string_1]
+            number_string = assets.DECILE_NAMES[string_1]
         else:
-            number_string = DECILE_NAMES[string_1] + " " + get_single_fig_name(string_2)
+            number_string = (
+                assets.DECILE_NAMES[string_1] + " " + get_single_fig_name(string_2)
+            )
     return number_string
 
 
 def get_triple_fig_name(string_1: str, string_2: str, string_3: str) -> str:
     if string_2 == "0":
         if string_3 == "0":
-            number_string = DIGIT_NAMES[string_1] + " hundred"
+            number_string = asssets.DIGIT_NAMES[string_1] + " hundred"
         else:
             number_string = (
-                DIGIT_NAMES[string_1] + " hundred and " + get_single_fig_name(string_3)
+                assets.DIGIT_NAMES[string_1]
+                + " hundred and "
+                + get_single_fig_name(string_3)
             )
     else:
         number_string = (
-            DIGIT_NAMES[string_1]
+            assets.DIGIT_NAMES[string_1]
             + " hundred and "
             + get_double_fig_name(string_2, string_3)
         )
@@ -162,3 +132,40 @@ def problem_17(max_n: int) -> int:
     letter_string_no_spc = letter_string.replace(" ", "")
     letter_count = len(letter_string_no_spc)
     return letter_count
+
+
+def sum_divisors(n: int) -> int:
+    factors = prime_factors(n)
+    to_product = [(p ** (factors.count(p) + 1) - 1) / (p - 1) for p in set(factors)]
+    sum_divisors = int(prod(to_product))
+    return sum_divisors
+
+
+def sum_proper_divisors(n: int) -> int:
+    factors = prime_factors(n)
+    to_product = [(p ** (factors.count(p) + 1) - 1) / (p - 1) for p in set(factors)]
+    sum_divisors = int(prod(to_product)) - n
+    return sum_divisors
+
+
+def problem_21(max_n: int) -> int:
+    amicable_nums = []
+    for i in range(1, max_n):
+        sum_divisors = sum_proper_divisors(i)
+        to_check = sum_proper_divisors(sum_divisors)
+        if (to_check == i) and (sum_divisors != i):
+            amicable_nums.append(i)
+    amicable_sum = sum(amicable_nums)
+    return amicable_sum
+
+
+def problem_25(n_digits: int) -> int:
+    fn1, fn2 = 1, 0
+    fn = fn1 + fn2
+    index = 2
+    while len(str(fn)) < n_digits:
+        fn2 = fn1
+        fn1 = fn
+        fn = fn1 + fn2
+        index += 1
+    return index

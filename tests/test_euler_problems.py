@@ -34,3 +34,13 @@ def test_problem_16():
 def test_problem_17():
     letter_count = problem_17(5)
     assert letter_count == 19
+
+
+def test_problem_21():
+    amicable_sum = problem_21(10000)
+    assert amicable_sum == 31626
+
+
+def test_problem_25():
+    first_n_digit_index = problem_25(3)
+    assert first_n_digit_index == 12
