@@ -18,6 +18,10 @@ where e_k are the powers of the prime factor representation of n.
 
 dynamic typing makes this easy, just get 2**1000 then convert to string then to individual digits and sum
 
+#### Problem 20
+
+calculate factorial, convert to string, then sum digits
+
 #### Problem 21
 
 Use prime factorization then sum of divisors using
@@ -31,3 +35,7 @@ find all the amicable numbers by simple search of all below max number.
 Find first fibonacci number with specific number of digits.
 
 Use dummy variables to count up the fibonacci numbers in a while loop up until the len(str(fn)) reaches right length.
+
+#### Problem 48
+
+Use binary exponentiation to find large self powers, then sum up 

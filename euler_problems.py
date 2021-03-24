@@ -2,26 +2,31 @@
 
 Solutions to problems from Project Euler
 """
-import pytest
 from typing import List, Tuple
 from tqdm import tqdm
-from math import sqrt, prod
+from math import sqrt, prod, factorial
+import numpy as np
 import assets
+from utils import *
 
 
-def prime_factors(n: int) -> List[int]:
-    factorization = []
-    i = 2
-    while i * i <= n:
-        while n % i == 0:
-            factorization.append(i)
-            n //= i
-        i += 1
-
-    if n > 1:
-        factorization.append(n)
-
-    return factorization
+def problem_11(grid: List[List[int]]) -> int:
+    step = 4
+    horizontal_products = [
+        [prod(row[i : i + 4]) for i in range(0, len(row), step)] for row in grid
+    ]
+    transpose_grid = [[row[i] for row in grid] for i in range(len(grid))]
+    vertical_products = [
+        [prod(row[i : i + 4]) for i in range(0, len(row), step)]
+        for row in transpose_grid
+    ]
+    # left_diagonal_products =
+    # right_diagonal_products =
+    all_products = []
+    all_products.extend([i for row in horizontal_products for i in row])
+    all_products.extend([i for row in vertical_products for i in row])
+    biggest_product = max(all_products)
+    return biggest_product
 
 
 def problem_12(max_divisors: int) -> int:
@@ -44,18 +49,6 @@ def problem_13(int_series: List[int]) -> int:
     return first_10_int
 
 
-def collatz_seq_len(start: int) -> int:
-    current_num = start
-    seq_length = 1
-    while current_num > 1:
-        if current_num % 2 == 0:
-            current_num = int(current_num / 2)
-        else:
-            current_num = 3 * current_num + 1
-        seq_length += 1
-    return seq_length
-
-
 def problem_14(max_number: int) -> int:
     # could memoizaition, dynamical algorithm, but brute force for now
     current_int, longest_seq = 1, 0
@@ -69,62 +62,20 @@ def problem_14(max_number: int) -> int:
     return current_best
 
 
+def problem_15(grid_size: int) -> int:
+    # n_vertices = (grid_size+1)**2
+    # adjacency_matrix = np.matrix(np.zeros((n_vertices, n_vertices)), dtype=np.int)
+    # for i in range(n_vertices):
+    # path_length = 2*(grid_size+1)
+    # matrix_product = np.linalg.matrix_power(adjacency_matrix, path_length)
+    # return n_routes
+    pass
+
+
 def problem_16(power: int) -> int:
     digit_string = str(2 ** power)
     digit_sum = sum([int(i) for i in digit_string])
     return digit_sum
-
-
-def get_single_fig_name(string: str) -> str:
-    return assets.DIGIT_NAMES[string]
-
-
-def get_double_fig_name(string_1: str, string_2: str) -> str:
-    if string_1 == "1":
-        number_string = assets.TEEN_NAMES[string_2]
-    else:
-        if string_2 == "0":
-            number_string = assets.DECILE_NAMES[string_1]
-        else:
-            number_string = (
-                assets.DECILE_NAMES[string_1] + " " + get_single_fig_name(string_2)
-            )
-    return number_string
-
-
-def get_triple_fig_name(string_1: str, string_2: str, string_3: str) -> str:
-    if string_2 == "0":
-        if string_3 == "0":
-            number_string = asssets.DIGIT_NAMES[string_1] + " hundred"
-        else:
-            number_string = (
-                assets.DIGIT_NAMES[string_1]
-                + " hundred and "
-                + get_single_fig_name(string_3)
-            )
-    else:
-        number_string = (
-            assets.DIGIT_NAMES[string_1]
-            + " hundred and "
-            + get_double_fig_name(string_2, string_3)
-        )
-    return number_string
-
-
-def number_to_string(num: int) -> str:
-    digits = list(str(num))
-    digit_length = len(digits)
-    if digit_length == 4:
-        number_string = "one thousand"
-    elif digit_length == 3:
-        number_string = get_triple_fig_name(digits[0], digits[1], digits[2])
-    elif digit_length == 2:
-        number_string = get_double_fig_name(digits[0], digits[1])
-    elif digit_length == 1:
-        number_string = get_single_fig_name(digits[0])
-    else:
-        number_string = ""
-    return number_string
 
 
 def problem_17(max_n: int) -> int:
@@ -134,18 +85,11 @@ def problem_17(max_n: int) -> int:
     return letter_count
 
 
-def sum_divisors(n: int) -> int:
-    factors = prime_factors(n)
-    to_product = [(p ** (factors.count(p) + 1) - 1) / (p - 1) for p in set(factors)]
-    sum_divisors = int(prod(to_product))
-    return sum_divisors
-
-
-def sum_proper_divisors(n: int) -> int:
-    factors = prime_factors(n)
-    to_product = [(p ** (factors.count(p) + 1) - 1) / (p - 1) for p in set(factors)]
-    sum_divisors = int(prod(to_product)) - n
-    return sum_divisors
+def problem_20(n: int) -> int:
+    ftrl = factorial(n)
+    digits = list(str(ftrl))
+    digit_sum = sum([int(i) for i in digits])
+    return digit_sum
 
 
 def problem_21(max_n: int) -> int:
@@ -169,3 +113,47 @@ def problem_25(n_digits: int) -> int:
         fn = fn1 + fn2
         index += 1
     return index
+
+
+class DigitFactorializer:
+    def __init__(self):
+        self.digit_mapping = {i: factorial(int(i)) for i in list("0123456789")}
+
+    def __call__(self, x: int) -> int:
+        digits = list(str(x))
+        ftrl = [self.digit_mapping[i] for i in digits]
+        factorial_sum = sum(ftrl)
+        return factorial_sum
+
+
+def problem_34() -> int:
+    factorializer = DigitFactorializer()
+    curious_nums = []
+    n = 2
+    factorial_sum = 2
+    while n <= factorial_sum:
+        n += 1
+        factorial_sum = factorializer(n)
+        print(n)
+        print(factorial_sum)
+        if n == factorial_sum:
+            curious_nums.append(n)
+    sum_curious_nums = sum(curious_nums)
+    return sum_curious_nums
+
+
+def problem_48(n: int) -> int:
+    self_power_sum = sum([self_power(i) for i in range(1, n + 1)])
+    return self_power_sum
+
+
+def problem_50(max_n: int) -> int:
+    primes_below = primes_to(max_n - 1)
+    rolling_sum = []
+    last_val = 0
+    for i in primes_below:
+        last_val += i
+        if last_val in primes_below:
+            rolling_sum.append(last_val)
+    best_prime = max(rolling_sum)
+    return best_prime
