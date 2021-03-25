@@ -10,6 +10,43 @@ import assets
 from utils import *
 
 
+def problem_1(max_n: int) -> int:
+    multiples = [i for i in range(1, max_n) if (i % 3 == 0) or (i % 5 == 0)]
+    return sum(multiples)
+
+
+def problem_2(max_n: int) -> int:
+    sum = 0
+    current = 1
+    previous = 0
+    dummy = 0
+    while current < max_n:
+        dummy = current
+        current += previous
+        previous = dummy
+        if current % 2 == 0:
+            sum += current
+    return sum
+
+
+def problem_3(n: int) -> int:
+    factors = prime_factors(n)
+    return max(factors)
+
+
+def problem_4(max_n: int) -> int:
+    best = 0
+    for i in range(1, max_n):
+        for j in range(1, max_n):
+            candidate_string = str(j * i)
+            reversed = list(candidate_string)
+            reversed.reverse()
+            if all([a == b for a, b in zip(candidate_string, reversed)]):
+                if j * i > best:
+                    best = j * i
+    return best
+
+
 def problem_11(grid: List[List[int]]) -> int:
     step = 4
     horizontal_products = [
@@ -103,6 +140,11 @@ def problem_21(max_n: int) -> int:
     return amicable_sum
 
 
+def problem_23() -> int:
+
+    return 0
+
+
 def problem_25(n_digits: int) -> int:
     fn1, fn2 = 1, 0
     fn = fn1 + fn2
@@ -113,6 +155,14 @@ def problem_25(n_digits: int) -> int:
         fn = fn1 + fn2
         index += 1
     return index
+
+
+def problem_29(x: int) -> int:
+    terms = []
+    for i in range(2, x + 1):
+        for j in range(2, x + 1):
+            terms.append(i ** j)
+    return len(set(terms))
 
 
 class DigitFactorializer:

@@ -7,6 +7,50 @@ from euler_problems import *
 import assets
 
 
+def test_problem_1():
+    sum_multiples = problem_1(10)
+    assert sum_multiples == 23
+
+
+def test_problem_2():
+    sum_fib = problem_2(4000)
+    assert sum_fib == 3382
+
+
+def test_problem_3():
+    largest_prime_factor = problem_3(13195)
+    assert largest_prime_factor == 29
+
+
+def test_problem_4():
+    largest_product = problem_4(100)
+    assert largest_product == 9009
+
+
+def test_problem_5():
+    assert False
+
+
+def test_problem_6():
+    assert False
+
+
+def test_problem_7():
+    assert False
+
+
+def test_problem_8():
+    assert False
+
+
+def test_problem_9():
+    assert False
+
+
+def test_problem_10():
+    assert False
+
+
 def test_problem_11():
     grid = assets.PROBLEM_11_GRID
     biggest_product = problem_11(grid)
@@ -20,9 +64,6 @@ def test_problem_12():
 
 def test_problem_13():
     integer_list = assets.PROBLEM_13_INT_LIST
-    # integer_list = [23453892700, 49851123150, 19822383452]
-    # short_answer = 23453892700 + 49851123150 + 19822383452
-    # short_answer = int(str(short_answer)[:10])
     first_10_sum = problem_13(integer_list)
     assert first_10_sum == 5537376230
 
@@ -57,9 +98,19 @@ def test_problem_21():
     assert amicable_sum == 31627
 
 
+def test_problem_23():
+    sum_non_abundants = problem_23()
+    assert sum_non_abundants == 123
+
+
 def test_problem_25():
     first_n_digit_index = problem_25(3)
     assert first_n_digit_index == 12
+
+
+def test_problem_29():
+    n_distinct_terms = problem_29(5)
+    assert n_distinct_terms == 15
 
 
 def test_problem_34():
