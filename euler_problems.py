@@ -47,6 +47,58 @@ def problem_4(max_n: int) -> int:
     return best
 
 
+def problem_5(n: int) -> int:
+    factors = []
+    for div in range(1, n + 1):
+        divisor_factors = prime_factors(div)
+        for div_fac in set(divisor_factors):
+            div_fac_pow = divisor_factors.count(div_fac)
+            fac_pow = factors.count(div_fac)
+            if fac_pow < div_fac_pow:
+                factors.extend([div_fac for i in range(div_fac_pow - fac_pow)])
+    start = prod(factors)
+    return start
+
+
+def problem_6(n: int) -> int:
+    square_sum = sum(range(1, n + 1)) ** 2
+    sum_square = sum([i ** 2 for i in range(1, n + 1)])
+    return square_sum - sum_square
+
+
+def problem_7(n: int) -> int:
+    primes = primes_to(1100)
+    nth_prime = primes[n - 1]
+    return nth_prime
+
+
+def problem_8(n: int) -> int:
+    int_string = assets.PROBLEM_8_STRING
+    digits = [int(i) for i in int_string]
+    best = 0
+    for i in range(len(digits) - n):
+        current = prod(digits[i : i + n])
+        if current > best:
+            best = current
+    return best
+
+
+def problem_9(n: int) -> int:
+    triplet_product = 0
+    for k in range(2, n):
+        for j in range(1, k):
+            for i in range(0, j):
+                if i + j + k == n:
+                    if i ** 2 + j ** 2 == k ** 2:
+                        triplet_product = i * j * k
+    return triplet_product
+
+
+def problem_10(n: int) -> int:
+    primes = primes_to(n)
+    return sum(primes)
+
+
 def problem_11(grid: List[List[int]]) -> int:
     step = 4
     horizontal_products = [

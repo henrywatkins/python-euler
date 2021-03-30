@@ -28,27 +28,33 @@ def test_problem_4():
 
 
 def test_problem_5():
-    assert False
+    divisible = problem_5(10)
+    assert divisible == 2520
 
 
 def test_problem_6():
-    assert False
+    sum_square_diff = problem_6(10)
+    assert sum_square_diff == 2640
 
 
 def test_problem_7():
-    assert False
+    prime = problem_7(6)
+    assert prime == 13
 
 
 def test_problem_8():
-    assert False
+    max_prod = problem_8(4)
+    assert max_prod == 5832
 
 
 def test_problem_9():
-    assert False
+    triplet_product = problem_9(10)
+    assert triplet_product == 0
 
 
 def test_problem_10():
-    assert False
+    prime_sum = problem_10(10)
+    assert prime_sum == 17
 
 
 def test_problem_11():

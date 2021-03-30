@@ -34,6 +34,22 @@ def collatz_seq_len(start: int) -> int:
     return seq_length
 
 
+def euler_totient(n: int) -> int:
+    """ calcualte the euler totient function of an integer"""
+    factors = prime_factors(n)
+    to_product = [(1 - 1 / p) for p in set(factors)]
+    product = prod(to_product)
+    return int(n * product)
+
+
+def num_divisors(n: int) -> int:
+    """calculate the number of divisors of an integer"""
+    factors = prime_factors(n)
+    to_product = [factors.count(p) + 1 for p in set(factors)]
+    product = prod(to_product)
+    return int(product)
+
+
 def sum_divisors(n: int) -> int:
     """sum divisors of integer"""
     factors = prime_factors(n)
@@ -44,9 +60,7 @@ def sum_divisors(n: int) -> int:
 
 def sum_proper_divisors(n: int) -> int:
     """sum the proper divisors of integer"""
-    factors = prime_factors(n)
-    to_product = [(p ** (factors.count(p) + 1) - 1) / (p - 1) for p in set(factors)]
-    sum_divisors = int(prod(to_product)) - n
+    sum_divisors = sum_divisors(n) - n
     return sum_divisors
 
 

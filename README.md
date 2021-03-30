@@ -6,6 +6,17 @@ Solution checking is performed via pytest unit tests.
 
 ## Tricks/Methods
 
+#### Problem 5
+
+Given a set of necessary divisors, find the smallest number with that set among its divisors. The prime factorization of each divisor will be a subset of the prime factorisation of the number. Find the prime factorisations of the divisors, then find the max power of each prime necessary to create each divisor. These powers are the used to find the final answer
+$$
+n = \prod_i^kp_i^{e_i}
+$$
+
+#### Problem 8
+
+Use a moving window across the list of digits, find the max.
+
 #### Problem 12
 
 Use a prime factorization method (trial division up to square root). Then use fact that number of divisors satisfies
