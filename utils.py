@@ -3,6 +3,7 @@
 from math import sqrt, prod, factorial, ceil, floor
 from typing import List, Tuple
 import assets
+import numpy as np
 
 
 def prime_factors(n: int) -> List[int]:
@@ -82,15 +83,20 @@ def sum_proper_divisors(n: int) -> int:
     return sum_divs
 
 
-def self_power(x: int) -> int:
-    """raise x to the power of itself using binary exponentiation"""
+def binary_exponent(a: int, b: int) -> int:
+    """raise a to power of b using binary exponentiation"""
     answer = 1
-    a, b = x, x
     while b > 0:
         if b & 1:
             answer *= a
         a *= a
         b >>= 1
+    return answer
+
+
+def self_power(x: int) -> int:
+    """raise x to the power of itself using binary exponentiation"""
+    answer = binary_exponent(x, x)
     return answer
 
 

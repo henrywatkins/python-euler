@@ -147,3 +147,8 @@ def test_problem_48():
 def test_problem_50():
     longest_sum_prime = problem_50(100)
     assert longest_sum_prime == 41
+
+
+def test_problem_56():
+    max_digit_sum = problem_56(3)
+    assert max_digit_sum == 4

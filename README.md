@@ -70,3 +70,7 @@ create a list of consecutive numbers, find their prime factors then check the le
 #### Problem 48
 
 Use binary exponentiation to find large self powers, then sum up 
+
+#### Problem 56
+
+Use binary exponentiation to find large powers, convert to strings then sum digits. Find the largest

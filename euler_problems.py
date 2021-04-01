@@ -298,3 +298,15 @@ def problem_50(max_n: int) -> int:
             rolling_sum.append(last_val)
     best_prime = max(rolling_sum)
     return best_prime
+
+
+def problem_56(max: int) -> int:
+    largest = 0
+    for i in range(max):
+        for j in range(max):
+            exponent = binary_exponent(i, j)
+            digits = list(str(exponent))
+            sum_digits = sum([int(i) for i in digits])
+            if sum_digits > largest:
+                largest = sum_digits
+    return largest
