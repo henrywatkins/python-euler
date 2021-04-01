@@ -83,20 +83,6 @@ def problem_8(n: int) -> int:
     return best
 
 
-def triangle_sols(p: int) -> List[Tuple[int]]:
-    """find pythagorean triplet solutions for
-    triangle of perimeter p"""
-    solutions = []
-    kmax = ceil(p / 2)
-    for k in range(1, kmax):
-        mmax = ceil(sqrt(p / (2 * k)))
-        for m in range(1, mmax):
-            for n in range(1, m):
-                if 2 * m * k * (m + n) == p:
-                    solutions.append((k, m, n))
-    return solutions
-
-
 def problem_9(triplet_sum: int) -> int:
     solutions = triangle_sols(triplet_sum)
     k, m, n = solutions[0]
@@ -163,13 +149,12 @@ def problem_14(max_number: int) -> int:
 
 
 def problem_15(grid_size: int) -> int:
-    # n_vertices = (grid_size+1)**2
-    # adjacency_matrix = np.matrix(np.zeros((n_vertices, n_vertices)), dtype=np.int)
-    # for i in range(n_vertices):
-    # path_length = 2*(grid_size+1)
-    # matrix_product = np.linalg.matrix_power(adjacency_matrix, path_length)
-    # return n_routes
-    pass
+    adjacency_matrix = grid_to_matrix(grid_size)
+    dummy_adj = grid_to_matrix(grid_size)
+    path_length = 2 * grid_size
+    adjacency_matrix = np.linalg.matrix_power(adjacency_matrix, path_length)
+    n_paths = adjacency_matrix[0, -1]
+    return n_paths
 
 
 def problem_16(power: int) -> int:
@@ -195,9 +180,9 @@ def problem_20(n: int) -> int:
 def problem_21(max_n: int) -> int:
     amicable_nums = []
     for i in range(1, max_n):
-        sum_divisors = sum_proper_divisors(i)
-        to_check = sum_proper_divisors(sum_divisors)
-        if (to_check == i) and (sum_divisors != i):
+        sum_divs = sum_proper_divisors(i)
+        to_check = sum_proper_divisors(sum_divs)
+        if (to_check == i) and (sum_divs != i):
             amicable_nums.append(i)
     amicable_sum = sum(amicable_nums)
     return amicable_sum

@@ -29,6 +29,14 @@ d(n) = \prod_{i=1}^k (e_i+1)
 $$
 where e_k are the powers of the prime factor representation of n. 
 
+#### Problem 15
+
+This is a graph path counting problem. Create the adjacency matrix of the graph (directed graph so not symmetric, no loops). The number of paths of length k between vertex i and j is given by the power of the adjacency matrix.
+$$
+C_k = A^k
+$$
+
+
 #### Problem 16
 
 dynamic typing makes this easy, just get 2**1000 then convert to string then to individual digits and sum

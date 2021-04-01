@@ -1,6 +1,6 @@
 """ Utility functions for Euler problems
 """
-from math import sqrt, prod, factorial
+from math import sqrt, prod, factorial, ceil, floor
 from typing import List, Tuple
 import assets
 
@@ -78,8 +78,8 @@ def sum_divisors(n: int) -> int:
 
 def sum_proper_divisors(n: int) -> int:
     """sum the proper divisors of integer"""
-    sum_divisors = sum_divisors(n) - n
-    return sum_divisors
+    sum_divs = sum_divisors(n) - n
+    return sum_divs
 
 
 def self_power(x: int) -> int:
@@ -103,6 +103,53 @@ def primes_to(n: int) -> List[int]:
             for j in range(i * i, n + 1, i):
                 is_prime[j] = False
     return [i for i in range(n + 1) if is_prime[i]]
+
+
+def triangle_sols(p: int) -> List[Tuple[int]]:
+    """find pythagorean triplet solutions for
+    triangle of perimeter p"""
+    solutions = []
+    kmax = ceil(p / 2)
+    for k in range(1, kmax):
+        mmax = ceil(sqrt(p / (2 * k)))
+        for m in range(1, mmax):
+            for n in range(1, m):
+                if 2 * m * k * (m + n) == p:
+                    solutions.append((k, m, n))
+    return solutions
+
+
+def grid_to_matrix(grid_size: int):
+    vertex_size = grid_size + 1
+    n_vertices = vertex_size ** 2
+    adjacency_matrix = np.matrix(np.zeros((n_vertices, n_vertices)), dtype=np.int64)
+    for i in range(vertex_size):
+        for j in range(vertex_size):
+            index = j + vertex_size * i
+            if i < vertex_size - 1:
+                adjacency_matrix[index, index + vertex_size] = 1
+            if j < vertex_size - 1:
+                adjacency_matrix[index, index + 1] = 1
+    return adjacency_matrix
+
+
+def matrix_sum(A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
+    assert len(A) == len(B)
+    assert all([len(i) == len(j) for i, j in zip(A, B)])
+    output = [[i + j for i, j in zip(a, b)] for a, b in zip(A, B)]
+    return output
+
+
+def matrix_product(A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
+    assert all([len(i) == len(B) for i in A])
+    output = [
+        [
+            sum([i * j for i, j in zip(a, [B[k][b] for k in range(len(B))])])
+            for b in range(len(B[0]))
+        ]
+        for a in A
+    ]
+    return output
 
 
 def get_single_fig_name(string: str) -> str:
