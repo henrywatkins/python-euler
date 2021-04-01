@@ -17,6 +17,10 @@ $$
 
 Use a moving window across the list of digits, find the max.
 
+#### Problem 9
+
+use euclid formula to get integer solutions to pythagoras eq, under the constraint of a+b+c=p. 
+
 #### Problem 12
 
 Use a prime factorization method (trial division up to square root). Then use fact that number of divisors satisfies
@@ -46,6 +50,14 @@ find all the amicable numbers by simple search of all below max number.
 Find first fibonacci number with specific number of digits.
 
 Use dummy variables to count up the fibonacci numbers in a while loop up until the len(str(fn)) reaches right length.
+
+#### Problem 39
+
+Like problem 9 , find pythagorean triplet solutions using euclid formula. remember to remove duplicate solutions, then search for the best in range 1<=p<=1000
+
+#### Problem 47
+
+create a list of consecutive numbers, find their prime factors then check the length of the set{}, if all prime factor sets the right length, return the result
 
 #### Problem 48
 

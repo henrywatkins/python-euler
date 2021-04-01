@@ -48,8 +48,8 @@ def test_problem_8():
 
 
 def test_problem_9():
-    triplet_product = problem_9(10)
-    assert triplet_product == 0
+    triplet_product = problem_9(12)
+    assert triplet_product == 60
 
 
 def test_problem_10():
@@ -109,6 +109,11 @@ def test_problem_23():
     assert sum_non_abundants == 123
 
 
+def test_problem_24():
+    nth_permuation = problem_24("012")
+    assert nth_permuation == "120"
+
+
 def test_problem_25():
     first_n_digit_index = problem_25(3)
     assert first_n_digit_index == 12
@@ -122,6 +127,16 @@ def test_problem_29():
 def test_problem_34():
     sum_curious_nums = problem_34()
     assert sum_curious_nums == 12487
+
+
+def test_problem_39():
+    n_solutions = problem_39(120)
+    assert n_solutions == 120
+
+
+def test_problem_47():
+    consecutive_num = problem_47(2)
+    assert consecutive_num == 14
 
 
 def test_problem_48():

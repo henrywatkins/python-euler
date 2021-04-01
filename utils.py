@@ -21,6 +21,24 @@ def prime_factors(n: int) -> List[int]:
     return factorization
 
 
+def gcd(a: int, b: int) -> int:
+    """implementation of euclid's algorithm
+    to find greatest common divisor of two integers"""
+    dummy = 0
+    while b:
+        a %= b
+        x = b
+        b = a
+        a = x
+    return a
+
+
+def euclid_formula(k: int, m: int, n: int) -> Tuple[int]:
+    """implementation of euclid's formula to find
+    pythagorean_triplets"""
+    return k * (m ** 2 - n ** 2), k * 2 * m * n, k * (m ** 2 + n ** 2)
+
+
 def collatz_seq_len(start: int) -> int:
     """calculate the length of the Collatz sequence starting at integer"""
     current_num = start

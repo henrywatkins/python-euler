@@ -4,7 +4,7 @@ Solutions to problems from Project Euler
 """
 from typing import List, Tuple
 from tqdm import tqdm
-from math import sqrt, prod, factorial
+from math import sqrt, prod, factorial, ceil, floor  # , gcd
 import numpy as np
 import assets
 from utils import *
@@ -83,14 +83,25 @@ def problem_8(n: int) -> int:
     return best
 
 
-def problem_9(n: int) -> int:
-    triplet_product = 0
-    for k in range(2, n):
-        for j in range(1, k):
-            for i in range(0, j):
-                if i + j + k == n:
-                    if i ** 2 + j ** 2 == k ** 2:
-                        triplet_product = i * j * k
+def triangle_sols(p: int) -> List[Tuple[int]]:
+    """find pythagorean triplet solutions for
+    triangle of perimeter p"""
+    solutions = []
+    kmax = ceil(p / 2)
+    for k in range(1, kmax):
+        mmax = ceil(sqrt(p / (2 * k)))
+        for m in range(1, mmax):
+            for n in range(1, m):
+                if 2 * m * k * (m + n) == p:
+                    solutions.append((k, m, n))
+    return solutions
+
+
+def problem_9(triplet_sum: int) -> int:
+    solutions = triangle_sols(triplet_sum)
+    k, m, n = solutions[0]
+    a, b, c = euclid_formula(k, m, n)
+    triplet_product = int(a * b * c)
     return triplet_product
 
 
@@ -197,6 +208,23 @@ def problem_23() -> int:
     return 0
 
 
+def permute(vals: List[int]) -> List[int]:
+    # """permute a list of ints based on lexicographic order"""
+    k = len(vals)
+    n = max(vals)
+    for i in range(k - 1, -1, -1):
+        if vals[i] < n - k + i + 1:
+            vals[i] += 1
+            for j in range(i + 1, k):
+                vals[j] = vals[j - 1] + 1
+    return vals
+
+
+def problem_24(digits: str) -> str:
+    str_sort = sorted(digits)
+    return
+
+
 def problem_25(n_digits: int) -> int:
     fn1, fn2 = 1, 0
     fn = fn1 + fn2
@@ -218,6 +246,8 @@ def problem_29(x: int) -> int:
 
 
 class DigitFactorializer:
+    """calculate sum of factorials of the digits of an integer"""
+
     def __init__(self):
         self.digit_mapping = {i: factorial(int(i)) for i in list("0123456789")}
 
@@ -232,16 +262,40 @@ def problem_34() -> int:
     factorializer = DigitFactorializer()
     curious_nums = []
     n = 2
-    factorial_sum = 2
-    while n <= factorial_sum:
+    while n < 1:
         n += 1
         factorial_sum = factorializer(n)
-        print(n)
-        print(factorial_sum)
         if n == factorial_sum:
             curious_nums.append(n)
     sum_curious_nums = sum(curious_nums)
     return sum_curious_nums
+
+
+def problem_39(max_p: int) -> int:
+    max_sols = 0
+    best_p = 1
+    for i in range(1, max_p + 1):
+        sols = triangle_sols(i)
+        triplets = [sorted(euclid_formula(*sol)) for sol in sols]
+        unique_triplets = [list(x) for x in set(tuple(x) for x in triplets)]
+        n_sols = len(unique_triplets)
+        if n_sols > max_sols:
+            max_sols = n_sols
+            best_p = i
+
+    return best_p
+
+
+def problem_47(n: int) -> int:
+
+    consecutive = [i for i in range(1, n + 1)]
+    while True:
+        distinct_factors = [set(prime_factors(i)) for i in consecutive]
+        if all([len(factors) == n for factors in distinct_factors]):
+            break
+        consecutive = [i + 1 for i in consecutive]
+
+    return consecutive[0]
 
 
 def problem_48(n: int) -> int:
