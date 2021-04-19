@@ -134,6 +134,11 @@ def test_problem_39():
     assert n_solutions == 120
 
 
+def test_problem_45():
+    tri_pent_hex = problem_45(284)
+    assert tri_pent_hex == 40755
+
+
 def test_problem_47():
     consecutive_num = problem_47(2)
     assert consecutive_num == 14
@@ -152,3 +157,8 @@ def test_problem_50():
 def test_problem_56():
     max_digit_sum = problem_56(3)
     assert max_digit_sum == 4
+
+
+def test_problem_92():
+    n_below = problem_92(10000000)
+    assert n_below == 81

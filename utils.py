@@ -139,6 +139,13 @@ def grid_to_matrix(grid_size: int):
     return adjacency_matrix
 
 
+def number_chain_step(x: int) -> int:
+    """add square of digits in integer to self"""
+    digits = list(str(x))
+    sum_sqr = sum([int(i) ** 2 for i in digits])
+    return sum_sqr
+
+
 def matrix_sum(A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
     assert len(A) == len(B)
     assert all([len(i) == len(j) for i, j in zip(A, B)])

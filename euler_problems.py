@@ -97,22 +97,42 @@ def problem_10(n: int) -> int:
 
 
 def problem_11(grid: List[List[int]]) -> int:
-    step = 4
-    horizontal_products = [
-        [prod(row[i : i + 4]) for i in range(0, len(row), step)] for row in grid
-    ]
-    transpose_grid = [[row[i] for row in grid] for i in range(len(grid))]
-    vertical_products = [
-        [prod(row[i : i + 4]) for i in range(0, len(row), step)]
-        for row in transpose_grid
-    ]
-    # left_diagonal_products =
-    # right_diagonal_products =
-    all_products = []
-    all_products.extend([i for row in horizontal_products for i in row])
-    all_products.extend([i for row in vertical_products for i in row])
-    biggest_product = max(all_products)
-    return biggest_product
+    step = 3
+    biggest = 0
+    grid_size = len(grid)
+    right, down, down_diag, up_diag = 0, 0, 0, 0
+    for i in range(grid_size):
+        for j in range(grid_size):
+            if j < grid_size - step:
+                right = prod(
+                    [grid[i][j], grid[i][j + 1], grid[i][j + 2], grid[i][j + 3]]
+                )
+            if i < grid_size - step:
+                down = prod(
+                    [grid[i][j], grid[i + 1][j], grid[i + 2][j], grid[i + 3][j]]
+                )
+            if (j < grid_size - step) & (i < grid_size - step):
+                down_diag = prod(
+                    [
+                        grid[i][j],
+                        grid[i + 1][j + 1],
+                        grid[i + 2][j + 2],
+                        grid[i + 3][j + 3],
+                    ]
+                )
+            if (j < grid_size - step) & (i > step):
+                up_diag = prod(
+                    [
+                        grid[i][j],
+                        grid[i - 1][j + 1],
+                        grid[i - 2][j + 2],
+                        grid[i - 3][j + 3],
+                    ]
+                )
+            element_max = max([right, down, down_diag])
+            if element_max > biggest:
+                biggest = element_max
+    return biggest
 
 
 def problem_12(max_divisors: int) -> int:
@@ -271,6 +291,10 @@ def problem_39(max_p: int) -> int:
     return best_p
 
 
+def problem_45(n: int) -> int:
+    pass
+
+
 def problem_47(n: int) -> int:
 
     consecutive = [i for i in range(1, n + 1)]
@@ -310,3 +334,21 @@ def problem_56(max: int) -> int:
             if sum_digits > largest:
                 largest = sum_digits
     return largest
+
+
+def problem_92(n: int) -> int:
+    looper = 0
+    has_89 = [89]
+    has_1 = [1]
+    stack = []
+    for i in tqdm(range(1, n)):
+        looper = i
+        while True:
+            looper = number_chain_step(looper)
+            if looper in has_89:
+                has_89.append(i)
+                break
+            elif looper in has_1:
+                has_1.append(1)
+                break
+    return len(has_89)
