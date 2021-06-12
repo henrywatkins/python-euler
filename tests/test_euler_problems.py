@@ -154,9 +154,19 @@ def test_problem_50():
     assert longest_sum_prime == 41
 
 
+def test_problem_52():
+    smallest_permuted_multiple = problem_52(2)
+    assert smallest_permuted_multiple == 125874
+
+
 def test_problem_56():
     max_digit_sum = problem_56(3)
     assert max_digit_sum == 4
+
+
+def test_problem_57():
+    n_bigger_numerators = problem_57(9)
+    assert n_bigger_numerators == 1
 
 
 def test_problem_92():

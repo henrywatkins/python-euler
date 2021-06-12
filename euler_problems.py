@@ -324,6 +324,15 @@ def problem_50(max_n: int) -> int:
     return best_prime
 
 
+def problem_52(max_mult: int) -> int:
+    x = 1
+    while True:
+        x_digits = sorted(str(x))
+        if all([sorted(str(m * x)) == x_digits for m in range(2, max_mult + 1)]):
+            return x
+        x += 1
+
+
 def problem_56(max: int) -> int:
     largest = 0
     for i in range(max):
@@ -336,11 +345,30 @@ def problem_56(max: int) -> int:
     return largest
 
 
+def problem_57(max_exp: int) -> int:
+    n_more_numerators = 0
+    h0, k0 = 3, 2
+    h1, k1 = 7, 5
+    dummy = 0
+    a = 2
+    for i in range(2, max_exp):
+        dummy = h1
+        h1 = 2 * h1 + h0
+        h0 = dummy
+        dummy = k1
+        k1 = 2 * k1 + k0
+        k0 = dummy
+        if len(str(h1)) > len(str(k1)):
+            n_more_numerators += 1
+    return n_more_numerators
+
+
 def problem_92(n: int) -> int:
     looper = 0
     has_89 = [89]
     has_1 = [1]
     stack = []
+    return 0
     for i in tqdm(range(1, n)):
         looper = i
         while True:
@@ -351,4 +379,4 @@ def problem_92(n: int) -> int:
             elif looper in has_1:
                 has_1.append(1)
                 break
-    return len(has_89)
+    # return len(has_89)

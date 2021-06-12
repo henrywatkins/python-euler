@@ -71,6 +71,19 @@ create a list of consecutive numbers, find their prime factors then check the le
 
 Use binary exponentiation to find large self powers, then sum up 
 
+#### Problem 52
+
+while loop iterating up through the positive numbers, look at a sorted list of digits, and check if all the sorted digit lists of all multiples are equal
+
 #### Problem 56
 
 Use binary exponentiation to find large powers, convert to strings then sum digits. Find the largest
+
+#### Problem 57
+
+Use recurrence relations for the convergents of an infinite continued fraction.
+$$
+h_n = a_n h_{n-1} + h_{n-2}\\
+k_n = a_n k_{n-1} + h_{n-2}
+$$
+For the numerator and denominator of the nth rational approximation respectively.
