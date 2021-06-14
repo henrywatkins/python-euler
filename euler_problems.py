@@ -276,6 +276,23 @@ def problem_34() -> int:
     return sum_curious_nums
 
 
+def problem_35(max_n: int) -> int:
+    primes = primes_to(max_n)
+    circular_primes = []
+    for p in primes:
+        Nd = floor(log10(p) + 1)
+        str_p = str(p)
+        rotations = [p]
+        for i in range(Nd - 1):
+            str_p = shift(1, str_p)
+            rotations.append(int(str_p))
+        prime_rotations = [r for r in rotations if len(prime_factors(r)) == 1]
+        if len(rotations) == len(prime_rotations):
+            circular_primes.append(p)
+    n_circulars = len(set(circular_primes))
+    return n_circulars
+
+
 def problem_39(max_p: int) -> int:
     max_sols = 0
     best_p = 1

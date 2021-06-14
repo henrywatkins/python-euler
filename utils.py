@@ -111,6 +111,10 @@ def primes_to(n: int) -> List[int]:
     return [i for i in range(n + 1) if is_prime[i]]
 
 
+def shift(key, array):
+    return array[-key:] + array[:-key]
+
+
 def triangle_sols(p: int) -> List[Tuple[int]]:
     """find pythagorean triplet solutions for
     triangle of perimeter p"""

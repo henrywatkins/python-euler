@@ -129,6 +129,11 @@ def test_problem_34():
     assert sum_curious_nums == 12487
 
 
+def test_problem_35():
+    n_circular_primes = problem_35(100)
+    assert n_circular_primes == 13
+
+
 def test_problem_39():
     n_solutions = problem_39(120)
     assert n_solutions == 120

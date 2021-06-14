@@ -59,6 +59,10 @@ Find first fibonacci number with specific number of digits.
 
 Use dummy variables to count up the fibonacci numbers in a while loop up until the len(str(fn)) reaches right length.
 
+#### Problem 35
+
+Generate list of primes with eratosthenes, then rotate the primes by shifting the string version with array slicing. Check each rotation is prime by getting its prime factors. Add to circular prime list if all rotations are prime.
+
 #### Problem 39
 
 Like problem 9 , find pythagorean triplet solutions using euclid formula. remember to remove duplicate solutions, then search for the best in range 1<=p<=1000
