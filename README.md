@@ -87,3 +87,15 @@ h_n = a_n h_{n-1} + h_{n-2}\\
 k_n = a_n k_{n-1} + h_{n-2}
 $$
 For the numerator and denominator of the nth rational approximation respectively.
+
+#### Problem 63
+
+Use fact that the number of digits in decimal number can be found with log
+$$
+N_d = \lfloor\log_{10}(X)\rfloor +1
+$$
+Problem is then to find the number of solutions (d, x) that satisfy
+$$
+d-1 = \lfloor d\log_{10}(x)\rfloor
+$$
+For a specific value of d, that largest value x can take is 10, and so loop over values of d and x = 1-10 and count those that satisfy the above expression.

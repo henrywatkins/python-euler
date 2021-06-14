@@ -169,6 +169,11 @@ def test_problem_57():
     assert n_bigger_numerators == 1
 
 
+def test_problem_63():
+    n_digit_n_power_count = problem_63(100)
+    assert n_digit_n_power_count == 49
+
+
 def test_problem_92():
     n_below = problem_92(10000000)
     assert n_below == 81

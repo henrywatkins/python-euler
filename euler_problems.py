@@ -4,7 +4,7 @@ Solutions to problems from Project Euler
 """
 from typing import List, Tuple
 from tqdm import tqdm
-from math import sqrt, prod, factorial, ceil, floor  # , gcd
+from math import sqrt, prod, factorial, ceil, floor, log10  # , gcd
 import numpy as np
 import assets
 from utils import *
@@ -361,6 +361,15 @@ def problem_57(max_exp: int) -> int:
         if len(str(h1)) > len(str(k1)):
             n_more_numerators += 1
     return n_more_numerators
+
+
+def problem_63(max_p: int) -> int:
+    counts = 0
+    for p in range(1, max_p):
+        for x in range(1, 11):
+            if (p - 1) == floor(p * log10(x)):
+                counts += 1
+    return counts
 
 
 def problem_92(n: int) -> int:
