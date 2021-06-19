@@ -60,7 +60,7 @@ def test_problem_10():
 def test_problem_11():
     grid = assets.PROBLEM_11_GRID
     biggest_product = problem_11(grid)
-    assert biggest_product == 1788696
+    assert biggest_product == 70600674
 
 
 def test_problem_12():
@@ -94,6 +94,12 @@ def test_problem_17():
     assert letter_count == 19
 
 
+def test_problem_18():
+    tri_values = assets.PROBLEM_18_TRI
+    max_sum_path = problem_18(tri_values)
+    assert max_sum_path == 23
+
+
 def test_problem_20():
     factorial_digit_sum = problem_20(10)
     assert factorial_digit_sum == 27
@@ -122,6 +128,11 @@ def test_problem_25():
 def test_problem_29():
     n_distinct_terms = problem_29(5)
     assert n_distinct_terms == 15
+
+
+def test_problem_30():
+    sum_n_powers = problem_30(4)
+    assert sum_n_powers == 19316
 
 
 def test_problem_34():
@@ -155,7 +166,7 @@ def test_problem_48():
 
 
 def test_problem_50():
-    longest_sum_prime = problem_50(100)
+    longest_sum_prime = problem_50(1000)
     assert longest_sum_prime == 41
 
 

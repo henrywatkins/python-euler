@@ -6,6 +6,13 @@ import assets
 import numpy as np
 
 
+class Node:
+    def __init__(self, val):
+        self.value = val
+        self.left = None
+        self.right = None
+
+
 def prime_factors(n: int) -> List[int]:
     """Calculate prime factors of integer"""
     factorization = []
@@ -51,6 +58,18 @@ def collatz_seq_len(start: int) -> int:
             current_num = 3 * current_num + 1
         seq_length += 1
     return seq_length
+
+
+def generate_next_combination(array, n):
+    """given a list of integers in range 1 to N, derive the next combination"""
+    k = len(array)
+    for i in range(k - 1, 0, -1):
+        if array[i] < n - k + i + 1:
+            array[i] += 1
+            for j in range(i + 1, k):
+                array[j] = array[j - 1] + 1
+            return True
+    return False
 
 
 def euler_totient(n: int) -> int:
@@ -112,6 +131,7 @@ def primes_to(n: int) -> List[int]:
 
 
 def shift(key, array):
+    """rotate the array right by key steps"""
     return array[-key:] + array[:-key]
 
 

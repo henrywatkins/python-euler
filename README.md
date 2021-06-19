@@ -21,6 +21,10 @@ Use a moving window across the list of digits, find the max.
 
 use euclid formula to get integer solutions to pythagoras eq, under the constraint of a+b+c=p. 
 
+#### Problem 11
+
+iterate through matrix elements with double for loop, create horizontal, vertical, right diagonal and left diagonal groups of 4 for each index, then add to a product list. return the max valued product.
+
 #### Problem 12
 
 Use a prime factorization method (trial division up to square root). Then use fact that number of divisors satisfies
@@ -40,6 +44,10 @@ $$
 #### Problem 16
 
 dynamic typing makes this easy, just get 2**1000 then convert to string then to individual digits and sum
+
+#### Problem 18
+
+Each of the paths through the triangle can be represented by a binary number. There are 2^N total paths where N is the depth of the triangle. AS you loop through the enumerated paths, find the binary number, then the column index for that row in the path is the sum of all the binary digits up to that row. Loop through all paths to find max value.
 
 #### Problem 20
 

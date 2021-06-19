@@ -97,42 +97,21 @@ def problem_10(n: int) -> int:
 
 
 def problem_11(grid: List[List[int]]) -> int:
-    step = 3
-    biggest = 0
     grid_size = len(grid)
-    right, down, down_diag, up_diag = 0, 0, 0, 0
-    for i in range(grid_size):
-        for j in range(grid_size):
-            if j < grid_size - step:
-                right = prod(
-                    [grid[i][j], grid[i][j + 1], grid[i][j + 2], grid[i][j + 3]]
-                )
-            if i < grid_size - step:
-                down = prod(
-                    [grid[i][j], grid[i + 1][j], grid[i + 2][j], grid[i + 3][j]]
-                )
-            if (j < grid_size - step) & (i < grid_size - step):
-                down_diag = prod(
-                    [
-                        grid[i][j],
-                        grid[i + 1][j + 1],
-                        grid[i + 2][j + 2],
-                        grid[i + 3][j + 3],
-                    ]
-                )
-            if (j < grid_size - step) & (i > step):
-                up_diag = prod(
-                    [
-                        grid[i][j],
-                        grid[i - 1][j + 1],
-                        grid[i - 2][j + 2],
-                        grid[i - 3][j + 3],
-                    ]
-                )
-            element_max = max([right, down, down_diag])
-            if element_max > biggest:
-                biggest = element_max
-    return biggest
+    products = []
+    for i in range(grid_size - 4):
+        for j in range(grid_size - 4):
+            h_prod = prod([grid[i][j], grid[i + 1][j], grid[i + 2][j], grid[i + 3][j]])
+            v_prod = prod([grid[i][j], grid[i][j + 1], grid[i][j + 2], grid[i][j + 3]])
+            dl_prod = prod(
+                [grid[i][j], grid[i + 1][j + 1], grid[i + 2][j + 2], grid[i + 3][j + 3]]
+            )
+            dr_prod = prod(
+                [grid[i][j + 3], grid[i + 1][j + 2], grid[i + 2][j + 1], grid[i + 3][j]]
+            )
+            products.extend([h_prod, v_prod, dl_prod, dr_prod])
+
+    return max(products)
 
 
 def problem_12(max_divisors: int) -> int:
@@ -188,6 +167,21 @@ def problem_17(max_n: int) -> int:
     letter_string_no_spc = letter_string.replace(" ", "")
     letter_count = len(letter_string_no_spc)
     return letter_count
+
+
+def problem_18(tri_grid: List[List[int]]) -> int:
+    max_sum = 0
+    for i in range(2 ** len(tri_grid)):
+        sum = 0
+        path = [int(i) for i in reversed(bin(i)[2:])]
+        path.extend([0 for i in range(len(tri_grid) - len(path))])
+        col = 0
+        for row, step in zip(tri_grid, path):
+            sum += row[col]
+            col += step
+        if sum > max_sum:
+            max_sum = sum
+    return max_sum
 
 
 def problem_20(n: int) -> int:
@@ -248,6 +242,19 @@ def problem_29(x: int) -> int:
         for j in range(2, x + 1):
             terms.append(i ** j)
     return len(set(terms))
+
+
+def problem_30(p: int) -> int:
+    unique_power_sums = []
+    vals = [i ** p for i in range(10)]
+    max_digits = 4
+    idx = [0 for i in range(max_digits)]
+    while generate_next_combination(idx, 9):
+        power_sum = sum([vals[i] for i in idx])
+        if power_sum == int("".join([str(j) for j in idx])):
+            unique_power_sums.append(power_sum)
+    print(unique_power_sums)
+    return sum(unique_power_sums)
 
 
 class DigitFactorializer:
