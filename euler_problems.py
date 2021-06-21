@@ -207,21 +207,10 @@ def problem_23() -> int:
     return 0
 
 
-def permute(vals: List[int]) -> List[int]:
-    # """permute a list of ints based on lexicographic order"""
-    k = len(vals)
-    n = max(vals)
-    for i in range(k - 1, -1, -1):
-        if vals[i] < n - k + i + 1:
-            vals[i] += 1
-            for j in range(i + 1, k):
-                vals[j] = vals[j - 1] + 1
-    return vals
-
-
-def problem_24(digits: str) -> str:
-    str_sort = sorted(digits)
-    return
+def problem_24(digits: List[int], n_perms: int) -> List[int]:
+    for i in range(n_perms):
+        lexi_permute(digits)
+    return digits
 
 
 def problem_25(n_digits: int) -> int:
@@ -249,11 +238,10 @@ def problem_30(p: int) -> int:
     vals = [i ** p for i in range(10)]
     max_digits = 4
     idx = [0 for i in range(max_digits)]
-    while generate_next_combination(idx, 9):
+    while lexi_permute(idx, 9):
         power_sum = sum([vals[i] for i in idx])
         if power_sum == int("".join([str(j) for j in idx])):
             unique_power_sums.append(power_sum)
-    print(unique_power_sums)
     return sum(unique_power_sums)
 
 

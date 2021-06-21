@@ -60,16 +60,21 @@ def collatz_seq_len(start: int) -> int:
     return seq_length
 
 
-def generate_next_combination(array, n):
-    """given a list of integers in range 1 to N, derive the next combination"""
-    k = len(array)
-    for i in range(k - 1, 0, -1):
-        if array[i] < n - k + i + 1:
-            array[i] += 1
-            for j in range(i + 1, k):
-                array[j] = array[j - 1] + 1
-            return True
-    return False
+def lexi_permute(array):
+    """given a list of integers, derive the next lexicographic combination"""
+    l = len(array)
+    i = l - 1
+    while i > 0 and array[i - 1] >= array[i]:
+        i -= 1
+    if i <= 0:
+        return False
+
+    j = l - 1
+    while array[j] <= array[i - 1]:
+        j -= 1
+    array[i - 1], array[j] = array[j], array[i - 1]
+    array[i:] = array[l - 1 : i - 1 : -1]
+    return True
 
 
 def euler_totient(n: int) -> int:

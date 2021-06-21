@@ -116,8 +116,9 @@ def test_problem_23():
 
 
 def test_problem_24():
-    nth_permuation = problem_24("012")
-    assert nth_permuation == "120"
+    n = 5
+    nth_permuation = problem_24([0, 1, 2], n)
+    assert nth_permuation == [2, 1, 0]
 
 
 def test_problem_25():
