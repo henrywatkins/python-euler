@@ -126,6 +126,11 @@ def test_problem_25():
     assert first_n_digit_index == 12
 
 
+def test_problem_27():
+    max_sequence_prod = problem_27(50)
+    assert max_sequence_prod == 41
+
+
 def test_problem_29():
     n_distinct_terms = problem_29(5)
     assert n_distinct_terms == 15
@@ -146,9 +151,20 @@ def test_problem_35():
     assert n_circular_primes == 13
 
 
+def test_problem_36():
+    max_n = 10
+    palindrome_sum = problem_36(max_n)
+    assert palindrome_sum == 25
+
+
 def test_problem_39():
     n_solutions = problem_39(120)
     assert n_solutions == 120
+
+
+def test_problem_40():
+    champerdowne_digit_product = problem_40(1)
+    assert champerdowne_digit_product == 1
 
 
 def test_problem_45():

@@ -61,6 +61,10 @@ $$
 $$
 find all the amicable numbers by simple search of all below max number.
 
+#### Problem 24
+
+Create the lexicographic permutations of the numbers 0 to 9. There is a standard djikstra's algorithm for this. Find the rightmost index that is larger than its left neighbour, then swap all the elements up to the next value. Then 
+
 #### Problem 25
 
 Find first fibonacci number with specific number of digits.
@@ -71,9 +75,17 @@ Use dummy variables to count up the fibonacci numbers in a while loop up until t
 
 Generate list of primes with eratosthenes, then rotate the primes by shifting the string version with array slicing. Check each rotation is prime by getting its prime factors. Add to circular prime list if all rotations are prime.
 
+#### Problem 36
+
+Use the bin function to find binary version of number, then use reversed to check if palindrome; add to list and sum.
+
 #### Problem 39
 
 Like problem 9 , find pythagorean triplet solutions using euclid formula. remember to remove duplicate solutions, then search for the best in range 1<=p<=1000
+
+#### Problem 40
+
+create champerdowne constant by string concatenation, then just find the product of digits and index locations.
 
 #### Problem 47
 

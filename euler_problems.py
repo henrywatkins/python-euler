@@ -225,6 +225,10 @@ def problem_25(n_digits: int) -> int:
     return index
 
 
+def problem_27(max_ab: int) -> int:
+    return 0
+
+
 def problem_29(x: int) -> int:
     terms = []
     for i in range(2, x + 1):
@@ -288,6 +292,17 @@ def problem_35(max_n: int) -> int:
     return n_circulars
 
 
+def problem_36(max_n: int) -> int:
+    palindromes = []
+    for i in range(max_n):
+        binary = bin(i)[2:]
+        is_bin_palindrome = list(reversed(binary)) == list(binary)
+        is_dec_palindrome = list(reversed(str(i))) == list(str(i))
+        if is_bin_palindrome and is_dec_palindrome:
+            palindromes.append(i)
+    return sum(palindromes)
+
+
 def problem_39(max_p: int) -> int:
     max_sols = 0
     best_p = 1
@@ -301,6 +316,14 @@ def problem_39(max_p: int) -> int:
             best_p = i
 
     return best_p
+
+
+def problem_40(p: int) -> int:
+    max = 10 ** p
+    all_ints = "".join([str(i) for i in range(1, max)])
+    indices = [10 ** i for i in range(p)]
+    digits = [int(all_ints[i - 1]) for i in indices]
+    return prod(digits)
 
 
 def problem_45(n: int) -> int:
