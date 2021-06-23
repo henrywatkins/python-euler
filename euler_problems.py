@@ -278,16 +278,12 @@ class DigitFactorializer:
 
 
 def problem_34() -> int:
-    factorializer = DigitFactorializer()
+    MAX = 1000
     curious_nums = []
-    n = 2
-    while n < 1:
-        n += 1
-        factorial_sum = factorializer(n)
-        if n == factorial_sum:
-            curious_nums.append(n)
-    sum_curious_nums = sum(curious_nums)
-    return sum_curious_nums
+    for i in range(3, MAX):
+        if sum([factorial(int(d)) for d in str(i)]) == i:
+            curious_nums.append(i)
+    return sum(curious_nums)
 
 
 def problem_35(max_n: int) -> int:

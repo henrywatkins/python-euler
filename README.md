@@ -75,6 +75,10 @@ Find first fibonacci number with specific number of digits.
 
 Use dummy variables to count up the fibonacci numbers in a while loop up until the len(str(fn)) reaches right length.
 
+#### Problem 34
+
+iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).
+
 #### Problem 35
 
 Generate list of primes with eratosthenes, then rotate the primes by shifting the string version with array slicing. Check each rotation is prime by getting its prime factors. Add to circular prime list if all rotations are prime.
