@@ -110,6 +110,12 @@ def test_problem_21():
     assert amicable_sum == 31627
 
 
+def test_problem_22():
+    filename = "./assets/names.txt"
+    names_scores = problem_22(filename)
+    assert names_scores == 871198282
+
+
 def test_problem_23():
     sum_non_abundants = problem_23()
     assert sum_non_abundants == 123

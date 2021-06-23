@@ -202,6 +202,21 @@ def problem_21(max_n: int) -> int:
     return amicable_sum
 
 
+def problem_22(filename: str) -> int:
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    char_map = {char: i + 1 for i, char in enumerate(alphabet)}
+    with open(filename, "r") as file:
+        names_str = file.read()
+    names_str = names_str.strip('"')
+    split_names = names_str.split('","')
+    sorted_names = sorted(split_names)
+    name_scores = [
+        (i + 1) * sum([char_map[c] for c in name])
+        for i, name in enumerate(sorted_names)
+    ]
+    return sum(name_scores)
+
+
 def problem_23() -> int:
 
     return 0

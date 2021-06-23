@@ -61,6 +61,10 @@ $$
 $$
 find all the amicable numbers by simple search of all below max number.
 
+#### Problem 22
+
+load in file with `with open` then trip and split the names into a list. Sort with `sorted`, then use `enumerate` to get index and multiply with name score. This names score comes from `dict` with enumerated alphabet values.
+
 #### Problem 24
 
 Create the lexicographic permutations of the numbers 0 to 9. There is a standard djikstra's algorithm for this. Find the rightmost index that is larger than its left neighbour, then swap all the elements up to the next value. Then 
