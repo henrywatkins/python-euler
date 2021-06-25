@@ -184,6 +184,19 @@ def problem_18(tri_grid: List[List[int]]) -> int:
     return max_sum
 
 
+def problem_19() -> int:
+    start, end = 1901, 2001
+    day_of_week = 1
+    n_sundays = 0
+    for year in range(start, end):
+        for month in range(1, 13):
+            for day in range(1, get_month_days(month, year) + 1):
+                day_of_week += 1
+                if (day_of_week % 7 == 0) and (day == 1):
+                    n_sundays += 1
+    return n_sundays
+
+
 def problem_20(n: int) -> int:
     ftrl = factorial(n)
     digits = list(str(ftrl))

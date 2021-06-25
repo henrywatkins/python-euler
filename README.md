@@ -49,6 +49,10 @@ dynamic typing makes this easy, just get 2**1000 then convert to string then to 
 
 Each of the paths through the triangle can be represented by a binary number. There are 2^N total paths where N is the depth of the triangle. AS you loop through the enumerated paths, find the binary number, then the column index for that row in the path is the sum of all the binary digits up to that row. Loop through all paths to find max value.
 
+#### Problem 19
+
+Create function to get the n days in a month given a year and month. iterate through the days of the month and years, counting the days, alongside a day of the week counter. if day of week counter evenly divisible by 7 then it is a sunday, then check if it is the first of the month.
+
 #### Problem 20
 
 calculate factorial, convert to string, then sum digits

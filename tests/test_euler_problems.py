@@ -100,6 +100,11 @@ def test_problem_18():
     assert max_sum_path == 23
 
 
+def test_problem_19():
+    n_sundays = problem_19()
+    assert n_sundays == 171
+
+
 def test_problem_20():
     factorial_digit_sum = problem_20(10)
     assert factorial_digit_sum == 27

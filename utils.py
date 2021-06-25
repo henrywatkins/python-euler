@@ -230,6 +230,28 @@ def get_triple_fig_name(string_1: str, string_2: str, string_3: str) -> str:
     return number_string
 
 
+def get_month_days(month, year):
+    """given the month index and year, how many days does that month have?"""
+    if month not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
+        raise ValueError("Only month indices acceptable")
+
+    if month == 2:
+        if year % 4 == 0:
+            if year % 100 == 0:
+                if year % 400 == 0:
+                    return 29
+                else:
+                    return 28
+            else:
+                return 29
+        else:
+            return 28
+    elif month in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
+
+
 def number_to_string(num: int) -> str:
     """convert integer to a named string"""
     digits = list(str(num))
