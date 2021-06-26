@@ -69,6 +69,10 @@ find all the amicable numbers by simple search of all below max number.
 
 load in file with `with open` then trip and split the names into a list. Sort with `sorted`, then use `enumerate` to get index and multiply with name score. This names score comes from `dict` with enumerated alphabet values.
 
+#### Problem 23
+
+Find all abundant numbers below the max value of 28124, then find all possible pair sums. Using set difference, find those numbers below 28124 which do not exist in this combination set. return the sum of these.
+
 #### Problem 24
 
 Create the lexicographic permutations of the numbers 0 to 9. There is a standard djikstra's algorithm for this. Find the rightmost index that is larger than its left neighbour, then swap all the elements up to the next value. Then 

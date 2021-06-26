@@ -231,8 +231,11 @@ def problem_22(filename: str) -> int:
 
 
 def problem_23() -> int:
-
-    return 0
+    N_max = 281
+    abundants = [i for i in range(1, N_max) if sum_proper_divisors(i) > i]
+    combinations = set([i + j for i in abundants for j in abundants])
+    not_abundant_sum = set(list(range(N_max))).difference(combinations)
+    return sum(not_abundant_sum)
 
 
 def problem_24(digits: List[int], n_perms: int) -> List[int]:

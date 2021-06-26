@@ -123,7 +123,7 @@ def test_problem_22():
 
 def test_problem_23():
     sum_non_abundants = problem_23()
-    assert sum_non_abundants == 123
+    assert sum_non_abundants == 19866
 
 
 def test_problem_24():
