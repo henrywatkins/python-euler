@@ -451,20 +451,17 @@ def problem_63(max_p: int) -> int:
     return counts
 
 
-def problem_92(n: int) -> int:
-    looper = 0
-    has_89 = [89]
-    has_1 = [1]
-    stack = []
-    return 0
-    for i in tqdm(range(1, n)):
-        looper = i
+def problem_92(max_n: int) -> int:
+    n_to_89 = 0
+    for i in range(1, max_n):
+        chain = i
         while True:
-            looper = number_chain_step(looper)
-            if looper in has_89:
-                has_89.append(i)
+            chain = sum([int(j) ** 2 for j in str(chain)])
+            if chain == 89:
+                n_to_89 += 1
                 break
-            elif looper in has_1:
-                has_1.append(1)
+            elif chain == 1:
                 break
-    # return len(has_89)
+            else:
+                continue
+    return n_to_89

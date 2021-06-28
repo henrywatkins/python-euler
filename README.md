@@ -143,3 +143,7 @@ $$
 d-1 = \lfloor d\log_{10}(x)\rfloor
 $$
 For a specific value of d, that largest value x can take is 10, and so loop over values of d and x = 1-10 and count those that satisfy the above expression.
+
+#### Problem 92
+
+For each integer, while loop to iterate through the number chain, using `str` to get the digits of each integer. Break the loop if you find and 89 or 1. Then just counts the occurrences of 89 as you go

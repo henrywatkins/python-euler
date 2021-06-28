@@ -224,5 +224,5 @@ def test_problem_63():
 
 
 def test_problem_92():
-    n_below = problem_92(10000000)
-    assert n_below == 81
+    n_below = problem_92(100)
+    assert n_below == 80
