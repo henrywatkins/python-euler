@@ -81,7 +81,11 @@ Create the lexicographic permutations of the numbers 0 to 9. There is a standard
 
 Find first fibonacci number with specific number of digits.
 
-Use dummy variables to count up the fibonacci numbers in a while loop up until the len(str(fn)) reaches right length.
+Use dummy variables to count up the fibonacci numbers in a while loop up until the `len(str(fn))` reaches right length.
+
+#### Problem 26
+
+Perform division, where we use `//` and `%` to find the quotient and remainder respectively. For each integer, perform division in a while loop to find all the digits of the result, breaking if the remainder hits zero or if a remainder is repeated. There will be a reciprocal cycle if a remainder is repeated, the length of the reciprocal cycle is the number of digits before a repeated remainder. 
 
 #### Problem 34
 

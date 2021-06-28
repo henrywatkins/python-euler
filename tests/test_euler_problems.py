@@ -137,6 +137,11 @@ def test_problem_25():
     assert first_n_digit_index == 12
 
 
+def test_problem_26():
+    longest_cycle = problem_26(10)
+    assert longest_cycle == 7
+
+
 def test_problem_27():
     max_sequence_prod = problem_27(50)
     assert max_sequence_prod == 41

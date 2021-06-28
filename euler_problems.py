@@ -256,6 +256,23 @@ def problem_25(n_digits: int) -> int:
     return index
 
 
+def problem_26(max_n: int) -> int:
+    longest_cycle_int, longest_cycle = 1, 0
+    for i in range(1, max_n):
+        remainders = []
+        Q, R = 1 // i, 1 % i
+        while R > 0:
+            Rp = 10 * R
+            Q, R = Rp // i, Rp % i
+            if R in remainders:
+                break
+            remainders.append(R)
+        if len(remainders) > longest_cycle:
+            longest_cycle = len(remainders)
+            longest_cycle_int = i
+    return longest_cycle_int
+
+
 def problem_27(max_ab: int) -> int:
     return 0
 
