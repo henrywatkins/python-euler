@@ -144,7 +144,7 @@ def test_problem_26():
 
 def test_problem_27():
     max_sequence_prod = problem_27(50)
-    assert max_sequence_prod == 41
+    assert max_sequence_prod == -235
 
 
 def test_problem_29():

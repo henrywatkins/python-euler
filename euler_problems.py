@@ -274,7 +274,19 @@ def problem_26(max_n: int) -> int:
 
 
 def problem_27(max_ab: int) -> int:
-    return 0
+    max_prime_prod = 0
+    max_n_primes = 0
+    for a in range(-max_ab, max_ab):
+        for b in range(-max_ab, max_ab):
+            n = 0
+            current_n_primes = 0
+            while len(prime_factors(n ** 2 + a * n + b)) == 1:
+                n += 1
+                current_n_primes += 1
+            if current_n_primes > max_n_primes:
+                max_n_primes = current_n_primes
+                max_prime_prod = a * b
+    return max_prime_prod
 
 
 def problem_29(x: int) -> int:

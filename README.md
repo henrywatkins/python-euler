@@ -87,6 +87,14 @@ Use dummy variables to count up the fibonacci numbers in a while loop up until t
 
 Perform division, where we use `//` and `%` to find the quotient and remainder respectively. For each integer, perform division in a while loop to find all the digits of the result, breaking if the remainder hits zero or if a remainder is repeated. There will be a reciprocal cycle if a remainder is repeated, the length of the reciprocal cycle is the number of digits before a repeated remainder. 
 
+#### Problem 27
+
+for consecutive prime results to quadratic 
+$$
+n^2 + an+b
+$$
+Iterate through a nested for loop of a and b. Then nest a while loop that checks each consecutive result is prime (using the prime factorization). Return that with the longest sequence of consecutive prime results.
+
 #### Problem 34
 
 iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).
