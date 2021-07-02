@@ -289,6 +289,20 @@ def problem_27(max_ab: int) -> int:
     return max_prime_prod
 
 
+def problem_28(spiral_size: int) -> int:
+    diag_sum = 1
+    last_diag = 1
+    layer_width = 3
+    layer_max = layer_width ** 2
+    while last_diag < spiral_size ** 2:
+        last_diag += layer_width - 1
+        diag_sum += last_diag
+        if last_diag == layer_max:
+            layer_width += 2
+            layer_max = layer_width ** 2
+    return diag_sum
+
+
 def problem_29(x: int) -> int:
     terms = []
     for i in range(2, x + 1):

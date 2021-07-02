@@ -147,6 +147,11 @@ def test_problem_27():
     assert max_sequence_prod == -235
 
 
+def test_problem_28():
+    spiral_diag_sum = problem_28(5)
+    assert spiral_diag_sum == 101
+
+
 def test_problem_29():
     n_distinct_terms = problem_29(5)
     assert n_distinct_terms == 15
