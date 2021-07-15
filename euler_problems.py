@@ -314,12 +314,12 @@ def problem_29(x: int) -> int:
 def problem_30(p: int) -> int:
     unique_power_sums = []
     vals = [i ** p for i in range(10)]
-    max_digits = 4
-    idx = [0 for i in range(max_digits)]
-    while lexi_permute(idx, 9):
-        power_sum = sum([vals[i] for i in idx])
-        if power_sum == int("".join([str(j) for j in idx])):
-            unique_power_sums.append(power_sum)
+    max_N = 100000
+    for i in range(2, max_N):
+        digits = [int(j) for j in str(i)]
+        power_sum = sum([vals[k] for k in digits])
+        if power_sum == i:
+            unique_power_sums.append(i)
     return sum(unique_power_sums)
 
 

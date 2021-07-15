@@ -99,6 +99,10 @@ Iterate through a nested for loop of a and b. Then nest a while loop that checks
 
 Number Spiral: iterate through the spiral diagonals by  using a for loop and updating the interval every time you reach a layer max. All diagonal values are odd , and the intervals increase each layer by 2.
 
+#### Problem 30
+
+Simple search and check with an if statement. Create a list of powers of digits, then for each number below some chosen large value, get the digits, then check the sum of the powers of said digits. Include to list.
+
 #### Problem 34
 
 iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).
