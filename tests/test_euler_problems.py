@@ -162,6 +162,11 @@ def test_problem_30():
     assert sum_n_powers == 19316
 
 
+def test_problem_31():
+    count_ways = problem_31()
+    assert count_ways == 73682
+
+
 def test_problem_34():
     sum_curious_nums = problem_34()
     assert sum_curious_nums == 145

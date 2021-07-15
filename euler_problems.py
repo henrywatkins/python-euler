@@ -323,6 +323,74 @@ def problem_30(p: int) -> int:
     return sum(unique_power_sums)
 
 
+def problem_31():
+    ways_count = 0
+    for n_2P in range(2):
+        max_1P = 1 + (200 - n_2P * 200) // 100
+        for n_1P in range(max_1P):
+            max_50p = 1 + (200 - n_2P * 200 - n_1P * 100) // 50
+            for n_50p in range(max_50p):
+                max_20p = 1 + (200 - n_2P * 200 - n_1P * 100 - n_50p * 50) // 20
+                for n_20p in range(max_20p):
+                    max_10p = (
+                        1
+                        + (200 - n_2P * 200 - n_1P * 100 - n_50p * 50 - n_20p * 20)
+                        // 10
+                    )
+                    for n_10p in range(max_10p):
+                        max_5p = (
+                            1
+                            + (
+                                200
+                                - n_2P * 200
+                                - n_1P * 100
+                                - n_50p * 50
+                                - n_20p * 20
+                                - n_10p * 10
+                            )
+                            // 5
+                        )
+                        for n_5p in range(max_5p):
+                            max_2p = (
+                                1
+                                + (
+                                    200
+                                    - n_2P * 200
+                                    - n_1P * 100
+                                    - n_50p * 50
+                                    - n_20p * 20
+                                    - n_10p * 10
+                                    - n_5p * 5
+                                )
+                                // 2
+                            )
+                            for n_2p in range(max_2p):
+                                max_1p = 1 + (
+                                    200
+                                    - n_2P * 200
+                                    - n_1P * 100
+                                    - n_50p * 50
+                                    - n_20p * 20
+                                    - n_10p * 10
+                                    - n_5p * 5
+                                    - n_2p * 2
+                                )
+                                for n_1p in range(max_1p):
+                                    coin_sum = (
+                                        n_1p
+                                        + 2 * n_2p
+                                        + 5 * n_5p
+                                        + 10 * n_10p
+                                        + 20 * n_20p
+                                        + 50 * n_50p
+                                        + 100 * n_1P
+                                        + 200 * n_2P
+                                    )
+                                    if coin_sum == 200:
+                                        ways_count += 1
+    return ways_count
+
+
 class DigitFactorializer:
     """calculate sum of factorials of the digits of an integer"""
 

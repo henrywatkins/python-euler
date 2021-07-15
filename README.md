@@ -103,6 +103,10 @@ Number Spiral: iterate through the spiral diagonals by  using a for loop and upd
 
 Simple search and check with an if statement. Create a list of powers of digits, then for each number below some chosen large value, get the digits, then check the sum of the powers of said digits. Include to list.
 
+#### Problem 31
+
+Could possibly do this recursively, but instead, do nested for loop for decrease coin size, where the max N of each coin size for loop is set by the number of above sizes. Check to see if sum equals 200, and count.
+
 #### Problem 34
 
 iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).
