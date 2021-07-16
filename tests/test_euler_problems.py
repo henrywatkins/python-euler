@@ -167,6 +167,11 @@ def test_problem_31():
     assert count_ways == 73682
 
 
+def test_problem_32():
+    pandigital_product_sum = problem_32(4)
+    assert pandigital_product_sum == 12
+
+
 def test_problem_34():
     sum_curious_nums = problem_34()
     assert sum_curious_nums == 145

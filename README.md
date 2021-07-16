@@ -107,6 +107,10 @@ Simple search and check with an if statement. Create a list of powers of digits,
 
 Could possibly do this recursively, but instead, do nested for loop for decrease coin size, where the max N of each coin size for loop is set by the number of above sizes. Check to see if sum equals 200, and count.
 
+#### Problem 32
+
+Use the lexicographic permutation method to create all permutations of the digits 1-9. Then search all "slices" of these permutations e.g. "234589761" ->  "234", "5", "89761" by taking slices of the string and check if each satisfies a*b=c.
+
 #### Problem 34
 
 iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).

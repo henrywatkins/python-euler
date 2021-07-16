@@ -391,6 +391,21 @@ def problem_31():
     return ways_count
 
 
+def problem_32(digits: int) -> int:
+    pandigital_products = []
+    N = digits
+    array = list(range(1, N + 1))
+    while lexi_permute(array):
+        seq = "".join([str(i) for i in array])
+        for i in range(1, N - 1):
+            for j in range(i + 1, N):
+                cand, ier, prd = int(seq[:i]), int(seq[i:j]), int(seq[j:])
+                if cand * ier == prd:
+                    pandigital_products.append(prd)
+
+    return sum(set(pandigital_products))
+
+
 class DigitFactorializer:
     """calculate sum of factorials of the digits of an integer"""
 
