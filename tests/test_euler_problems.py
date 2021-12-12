@@ -172,6 +172,11 @@ def test_problem_32():
     assert pandigital_product_sum == 12
 
 
+def test_problem_33():
+    curious_fraction_product = problem_33()
+    assert curious_fraction_product == 9
+
+
 def test_problem_34():
     sum_curious_nums = problem_34()
     assert sum_curious_nums == 145
@@ -188,6 +193,12 @@ def test_problem_36():
     assert palindrome_sum == 25
 
 
+def test_problem_37():
+    max_n = 10000
+    trunc_prime_sum = problem_37(max_n)
+    assert trunc_prime_sum == 8920
+
+
 def test_problem_39():
     n_solutions = problem_39(120)
     assert n_solutions == 120
@@ -196,6 +207,12 @@ def test_problem_39():
 def test_problem_40():
     champerdowne_digit_product = problem_40(1)
     assert champerdowne_digit_product == 1
+
+
+def test_problem_41():
+    max_n = 999
+    biggest_pandigital_prime = problem_41(max_n)
+    assert biggest_pandigital_prime == 1982395
 
 
 def test_problem_45():

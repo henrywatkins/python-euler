@@ -1,6 +1,6 @@
 """ Utility functions for Euler problems
 """
-from math import sqrt, prod, factorial, ceil, floor
+from math import sqrt, prod, factorial, ceil, floor, log10
 from typing import List, Tuple
 import assets
 import numpy as np
@@ -41,6 +41,24 @@ def gcd(a: int, b: int) -> int:
     return a
 
 
+def is_truncatable_prime(x: int) -> bool:
+    """is x a truncatable prime number?"""
+    if len(prime_factors(x)) > 1:
+        return False
+    if x in [2, 3, 5, 7]:
+        return False
+    str_x = str(x)
+    len_x = len(str_x)
+    left_truncations = [int(str_x[i:]) for i in range(len_x)]
+    right_truncations = [int(str_x[: len_x - i]) for i in range(len_x)]
+    lefts_all_prime = all([len(prime_factors(i)) == 1 for i in left_truncations])
+    rights_all_prime = all([len(prime_factors(i)) == 1 for i in right_truncations])
+    if lefts_all_prime and rights_all_prime:
+        return True
+    else:
+        return False
+
+
 def euclid_formula(k: int, m: int, n: int) -> Tuple[int]:
     """implementation of euclid's formula to find
     pythagorean_triplets"""
@@ -78,7 +96,7 @@ def lexi_permute(array):
 
 
 def euler_totient(n: int) -> int:
-    """ calcualte the euler totient function of an integer"""
+    """calcualte the euler totient function of an integer"""
     factors = prime_factors(n)
     to_product = [(1 - 1 / p) for p in set(factors)]
     product = prod(to_product)
@@ -133,6 +151,12 @@ def primes_to(n: int) -> List[int]:
             for j in range(i * i, n + 1, i):
                 is_prime[j] = False
     return [i for i in range(n + 1) if is_prime[i]]
+
+
+def is_pandigital(n: int) -> bool:
+    """check if an integer is a pandigital number"""
+    digits = [int(i) for i in str(n)]
+    return all([digits.count(i + 1) == 1 for i, dig in enumerate(digits)])
 
 
 def shift(key, array):

@@ -4,7 +4,7 @@ Solutions to problems from Project Euler
 """
 from typing import List, Tuple
 from tqdm import tqdm
-from math import sqrt, prod, factorial, ceil, floor, log10  # , gcd
+from math import sqrt, prod, factorial, ceil, floor, log10, gcd
 import numpy as np
 import assets
 from utils import *
@@ -419,6 +419,25 @@ class DigitFactorializer:
         return factorial_sum
 
 
+def problem_33() -> int:
+    curious_fractions = []
+    for denom in range(10, 100, 1):
+        for numer in range(10, denom, 1):
+            common_div = gcd(numer, denom)
+            if common_div != 1:
+                new_numer = numer // common_div
+                new_denom = denom // common_div
+                n_str, d_str = str(numer), str(denom)
+                n_str2, d_str2 = str(new_numer), str(new_denom)
+                if (n_str[0] == n_str2[0]) and (d_str[0] == d_str2[0]):
+                    curious_tuple = (new_numer, new_denom)
+                    if curious_tuple not in curious_fractions:
+                        print(f"{numer}/{denom}")
+                        print(f"{new_numer}/{new_denom}")
+                        curious_fractions.append(curious_tuple)
+    return 0
+
+
 def problem_34() -> int:
     MAX = 1000
     curious_nums = []
@@ -456,6 +475,15 @@ def problem_36(max_n: int) -> int:
     return sum(palindromes)
 
 
+def problem_37(max_n: int) -> int:
+    trunc_primes = []
+    primes_to_max = primes_to(max_n)
+    for i in primes_to_max:
+        if is_truncatable_prime(i):
+            trunc_primes.append(i)
+    return sum(trunc_primes)
+
+
 def problem_39(max_p: int) -> int:
     max_sols = 0
     best_p = 1
@@ -477,6 +505,14 @@ def problem_40(p: int) -> int:
     indices = [10 ** i for i in range(p)]
     digits = [int(all_ints[i - 1]) for i in indices]
     return prod(digits)
+
+
+def problem_41(max_n: int) -> int:
+    for p in range(max_n, 1, -1):
+        if len(prime_factors(p)) == 1:
+            if is_pandigital(p):
+                return p
+    return 0
 
 
 def problem_45(n: int) -> int:

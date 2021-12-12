@@ -123,6 +123,10 @@ Generate list of primes with eratosthenes, then rotate the primes by shifting th
 
 Use the bin function to find binary version of number, then use reversed to check if palindrome; add to list and sum.
 
+#### Problem 37
+
+Use eratothenes sieve to create a list of primes up to a arbitrary large number. I know there are 11 to look for so just choose the number until 11 matching primes are reached. Check for truncation by iterating over the left and right sequences of string-ified primes and check if each sub-integer is a prime.
+
 #### Problem 39
 
 Like problem 9 , find pythagorean triplet solutions using euclid formula. remember to remove duplicate solutions, then search for the best in range 1<=p<=1000
