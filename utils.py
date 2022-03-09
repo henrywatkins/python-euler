@@ -103,6 +103,13 @@ def euler_totient(n: int) -> int:
     return int(n * product)
 
 
+def is_permutation(a: int, b: int) -> bool:
+    """check if a is a permuation of b"""
+    string_a = [i for i in str(a)]
+    string_b = [i for i in str(b)]
+    return all([string_a.count(i) == string_b.count(i) for i in range(0, 10)])
+
+
 def num_divisors(n: int) -> int:
     """calculate the number of divisors of an integer"""
     factors = prime_factors(n)

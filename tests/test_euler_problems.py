@@ -255,6 +255,24 @@ def test_problem_63():
     assert n_digit_n_power_count == 49
 
 
+def test_problem_64():
+    N = 100
+    n_odd_periods = problem_64(N)
+    assert n_odd_periods == 4
+
+
+def test_problem_69():
+    N = 10
+    euler_totient_max = problem_69(N)
+    assert euler_totient_max == 6
+
+
+def test_problem_70():
+    N = 100
+    euler_totient_minimum = problem_70(N)
+    assert euler_totient_minimum == 7
+
+
 def test_problem_92():
     n_below = problem_92(100)
     assert n_below == 80

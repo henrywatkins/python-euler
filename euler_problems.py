@@ -596,6 +596,50 @@ def problem_63(max_p: int) -> int:
     return counts
 
 
+def problem_64(N: int) -> int:
+    n_odd_periods = 0
+    for i in range(1, N + 1):
+        root = sqrt(i)
+        if root == int(root):
+            continue
+        a0 = floor(root)
+        limit = 2 * a0
+        floors = []
+        while a0 != limit:
+            residual = root - a0
+            root = 1 / residual
+            a0 = floor(root)
+            floors.append(a0)
+        if len(floors) % 2:
+            n_odd_periods += 1
+    return n_odd_periods
+
+
+def problem_69(N: int) -> int:
+    current_max = 0
+    current_best = 0
+    for i in tqdm(range(1, N + 1)):
+        totient = euler_totient(i)
+        ratio = i / totient
+        if ratio > current_max:
+            current_max = ratio
+            current_best = i
+    return current_best
+
+
+def problem_70(N: int) -> int:
+    current_best = N
+    smallest_ratio = N
+    for i in tqdm(range(2, N)):
+        totient = euler_totient(i)
+        if is_permutation(totient, i):
+            ratio = i / totient
+            if ratio < smallest_ratio:
+                current_best = i
+                smallest_ratio = ratio
+    return current_best
+
+
 def problem_92(max_n: int) -> int:
     n_to_89 = 0
     for i in range(1, max_n):

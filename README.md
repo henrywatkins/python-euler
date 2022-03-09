@@ -172,6 +172,28 @@ d-1 = \lfloor d\log_{10}(x)\rfloor
 $$
 For a specific value of d, that largest value x can take is 10, and so loop over values of d and x = 1-10 and count those that satisfy the above expression.
 
+#### Problem 64
+
+We get the continued fraction for the square root of a non-square number $N$ by
+$$
+r = \sqrt{N}\\
+i = \lfloor r\rfloor \\
+f = r - i \\
+r\prime = 1/f
+$$
+the continued fraction representation will be 
+$$
+a_n = i_n
+$$
+We use the fact that the final $a_n$ of a periodic sequence in the continued fraction representation is twice the leading term.
+$$
+a_n = 2a_0
+$$
+
+#### Problem 69
+
+Use the euler totient function $$\phi(n)$$ (calculated from the prime factors of n) to find the ratio of  n/totient. Then simply use a running best to find the value of n for which the ratio is maximized.
+
 #### Problem 92
 
 For each integer, while loop to iterate through the number chain, using `str` to get the digits of each integer. Break the loop if you find and 89 or 1. Then just counts the occurrences of 89 as you go
