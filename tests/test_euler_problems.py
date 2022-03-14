@@ -240,6 +240,12 @@ def test_problem_52():
     assert smallest_permuted_multiple == 125874
 
 
+def test_problem_53():
+    N = 100
+    n_more_than_mil = problem_53(N)
+    assert n_more_than_mil == 4
+
+
 def test_problem_56():
     max_digit_sum = problem_56(3)
     assert max_digit_sum == 4
@@ -276,3 +282,8 @@ def test_problem_70():
 def test_problem_92():
     n_below = problem_92(100)
     assert n_below == 80
+
+
+def test_problem_97():
+    last_ten_digits = problem_97()
+    assert last_ten_digits == 1907825665

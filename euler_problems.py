@@ -557,6 +557,19 @@ def problem_52(max_mult: int) -> int:
         x += 1
 
 
+def problem_53(M: int) -> int:
+    more_than_mil = []
+    factorials = {i: factorial(i) for i in range(0, M + 1)}
+    for n in range(1, M + 1):
+        for r in range(1, n + 1):
+            denom = factorials[r] * factorials[n - r]
+            num = factorials[n]
+            comb = num / denom
+            if comb > 1000000:
+                more_than_mil.append(comb)
+    return len(more_than_mil)
+
+
 def problem_56(max: int) -> int:
     largest = 0
     for i in range(max):
@@ -654,3 +667,10 @@ def problem_92(max_n: int) -> int:
             else:
                 continue
     return n_to_89
+
+
+def problem_97():
+    coef = 28433
+    exponent = 783
+    n = 1 + coef * 2 ** exponent
+    return int(str(n)[-10:])

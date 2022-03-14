@@ -147,6 +147,10 @@ Use binary exponentiation to find large self powers, then sum up
 
 while loop iterating up through the positive numbers, look at a sorted list of digits, and check if all the sorted digit lists of all multiples are equal
 
+#### Problem 53
+
+Combinatorial problem. Computing the binomial coefficients every time would be very expensive so just precompute the factorials for all integers up to n before the loop (using a python dict). then just search the binomial coefficients for those more than a million.
+
 #### Problem 56
 
 Use binary exponentiation to find large powers, convert to strings then sum digits. Find the largest
@@ -197,3 +201,12 @@ Use the euler totient function $$\phi(n)$$ (calculated from the prime factors of
 #### Problem 92
 
 For each integer, while loop to iterate through the number chain, using `str` to get the digits of each integer. Break the loop if you find and 89 or 1. Then just counts the occurrences of 89 as you go
+
+#### Problem 97
+
+Python can handle large numbers and so the trivial solution of just calculating the large prime and finding the last 10 digits is possible by brute force. However a more refined solution is to 
+
+use modulo 
+$$
+D_n(x) = \lfloor (x/10^{n-1}) \mod 10  \rfloor
+$$
