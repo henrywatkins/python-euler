@@ -135,6 +135,10 @@ Like problem 9 , find pythagorean triplet solutions using euclid formula. rememb
 
 create champerdowne constant by string concatenation, then just find the product of digits and index locations.
 
+#### Problem 46
+
+Use the eratosthenes sieve function to find all primes below each odd composite number, then calculate each value of the squared number to see if it is an integer (using floor(x)==x). If there are no integer values of this variable for every prime below c then it is the solution.  
+
 #### Problem 47
 
 create a list of consecutive numbers, find their prime factors then check the length of the set{}, if all prime factor sets the right length, return the result

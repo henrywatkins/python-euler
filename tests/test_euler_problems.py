@@ -219,6 +219,9 @@ def test_problem_45():
     tri_pent_hex = problem_45(284)
     assert tri_pent_hex == 40755
 
+def test_problem_46():
+    smallest_odd_composite = problem_46()
+    assert smallest_odd_composite == 238497
 
 def test_problem_47():
     consecutive_num = problem_47(2)

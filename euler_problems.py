@@ -518,6 +518,16 @@ def problem_41(max_n: int) -> int:
 def problem_45(n: int) -> int:
     pass
 
+def problem_46()-> int:
+    i=1
+    while True:
+        c = 2*i+1
+        c_factors = primes_to(c)
+        factor_vals = [sqrt(0.5*(c - factor)) for factor in c_factors]
+        val_bools = [floor(val)==val for val in factor_vals]
+        if not val_bools.count(True):
+            return c
+        i+=1
 
 def problem_47(n: int) -> int:
 
