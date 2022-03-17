@@ -111,6 +111,10 @@ Could possibly do this recursively, but instead, do nested for loop for decrease
 
 Use the lexicographic permutation method to create all permutations of the digits 1-9. Then search all "slices" of these permutations e.g. "234589761" ->  "234", "5", "89761" by taking slices of the string and check if each satisfies a*b=c.
 
+#### Problem 33
+
+loop through double-digit denominators and numerators up to denominator. Find a common digit that is not 0. Check if the reduced fraction is equal to the original fraction. 
+
 #### Problem 34
 
 iterate through numbers, use `str` and `math` package `factorial` to check if sum of factorials of digits equals number. Just chose a large number to stop at (100000).

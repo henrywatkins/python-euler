@@ -174,7 +174,7 @@ def test_problem_32():
 
 def test_problem_33():
     curious_fraction_product = problem_33()
-    assert curious_fraction_product == 9
+    assert curious_fraction_product == 100
 
 
 def test_problem_34():
@@ -219,9 +219,11 @@ def test_problem_45():
     tri_pent_hex = problem_45(284)
     assert tri_pent_hex == 40755
 
+
 def test_problem_46():
     smallest_odd_composite = problem_46()
-    assert smallest_odd_composite == 238497
+    assert smallest_odd_composite == 5777
+
 
 def test_problem_47():
     consecutive_num = problem_47(2)
@@ -280,6 +282,12 @@ def test_problem_70():
     N = 100
     euler_totient_minimum = problem_70(N)
     assert euler_totient_minimum == 7
+
+
+def test_problem_74():
+    max = 1000000
+    n_chains_60_terms = problem_74(max)
+    assert n_chains_60_terms == 23
 
 
 def test_problem_92():

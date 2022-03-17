@@ -3,7 +3,7 @@
 Solutions to problems from Project Euler
 """
 from typing import List, Tuple
-from tqdm import tqdm
+from tqdm import tqdm, trange
 from math import sqrt, prod, factorial, ceil, floor, log10, gcd
 import numpy as np
 import assets
@@ -423,19 +423,33 @@ def problem_33() -> int:
     curious_fractions = []
     for denom in range(10, 100, 1):
         for numer in range(10, denom, 1):
-            common_div = gcd(numer, denom)
-            if common_div != 1:
-                new_numer = numer // common_div
-                new_denom = denom // common_div
-                n_str, d_str = str(numer), str(denom)
-                n_str2, d_str2 = str(new_numer), str(new_denom)
-                if (n_str[0] == n_str2[0]) and (d_str[0] == d_str2[0]):
-                    curious_tuple = (new_numer, new_denom)
-                    if curious_tuple not in curious_fractions:
-                        print(f"{numer}/{denom}")
-                        print(f"{new_numer}/{new_denom}")
-                        curious_fractions.append(curious_tuple)
-    return 0
+            fraction_value = numer / denom
+            numer_digits = (int(str(numer)[0]), int(str(numer)[1]))
+            denom_digits = (int(str(denom)[0]), int(str(denom)[1]))
+            common_digit = [
+                i for i in numer_digits for j in denom_digits if (i == j) and (i != 0)
+            ]
+            if common_digit:
+                other_numer_digit = (
+                    numer_digits[0]
+                    if common_digit[0] == numer_digits[1]
+                    else numer_digits[1]
+                )
+                other_denom_digit = (
+                    denom_digits[0]
+                    if common_digit[0] == denom_digits[1]
+                    else denom_digits[1]
+                )
+                if other_denom_digit != 0:
+                    reduced_fraction = other_numer_digit / other_denom_digit
+                    if fraction_value == reduced_fraction:
+                        curious_fractions.append((numer, denom))
+
+    numerators, denominators = list(zip(*curious_fractions))
+    numerator = prod(numerators)
+    denominator = prod(denominators)
+    reduced_denominator = denominator // gcd(numerator, denominator)
+    return reduced_denominator
 
 
 def problem_34() -> int:
@@ -518,16 +532,18 @@ def problem_41(max_n: int) -> int:
 def problem_45(n: int) -> int:
     pass
 
-def problem_46()-> int:
-    i=1
+
+def problem_46() -> int:
+    i = 1
     while True:
-        c = 2*i+1
+        c = 2 * i + 1
         c_factors = primes_to(c)
-        factor_vals = [sqrt(0.5*(c - factor)) for factor in c_factors]
-        val_bools = [floor(val)==val for val in factor_vals]
+        factor_vals = [sqrt(0.5 * (c - factor)) for factor in c_factors]
+        val_bools = [floor(val) == val for val in factor_vals]
         if not val_bools.count(True):
             return c
-        i+=1
+        i += 1
+
 
 def problem_47(n: int) -> int:
 
@@ -661,6 +677,37 @@ def problem_70(N: int) -> int:
                 current_best = i
                 smallest_ratio = ratio
     return current_best
+
+
+def problem_74(max: int) -> int:
+    n_chains = 0
+    stops = {
+        145: 0,
+        169: 2,
+        871: 1,
+        872: 1,
+        363601: 2,
+        1454: 2,
+        45361: 1,
+        45362: 1,
+        2: 0,
+        1: 0,
+    }
+    factorials = {i: factorial(i) for i in range(10)}
+    for i in trange(max):
+        sequence_length = 1
+        iterate = i
+        while iterate not in stops.keys():
+            digits = [int(i) for i in str(iterate)]
+            iterate = sum([factorials[j] for j in digits])
+            sequence_length += 1
+            if sequence_length > 60:
+                break
+        sequence_length += stops[iterate]
+        if sequence_length == 60:
+            n_chains += 1
+
+    return n_chains
 
 
 def problem_92(max_n: int) -> int:
