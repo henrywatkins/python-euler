@@ -545,6 +545,35 @@ def problem_41(max: int) -> int:
     return biggest
 
 
+def problem_42() -> int:
+    word_list = read_txt("assets/p042_words.txt")
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    letter_values = {letter: index + 1 for index, letter in enumerate(alphabet)}
+    word_values = [sum([letter_values[l] for l in w]) for w in word_list]
+    max_word_value = max(word_values)
+    max_triangle_index = floor(0.5 * sqrt(1 + 8 * max_word_value) - 0.5)
+    triangle_numbers = [int(0.5 * i * (i + 1)) for i in range(1, max_triangle_index)]
+    triangle_words = [wordval for wordval in word_values if wordval in triangle_numbers]
+    return len(triangle_words)
+
+
+def problem_43(max_digit: int) -> int:
+    digits = [i for i in range(max_digit)]
+    has_property = []
+    divisors = [2, 3, 5, 7, 11, 13, 17]
+    while lexi_permute(digits):
+        substrings = [
+            [digits[i], digits[i + 1], digits[i + 2]] for i in range(1, max_digit - 2)
+        ]
+        conditions = [
+            concatenate_digits(sub) % divisors[i] == 0
+            for i, sub in enumerate(substrings)
+        ]
+        if all(conditions):
+            has_property.append(concatenate_digits(digits))
+    return sum(has_property)
+
+
 def problem_45(n: int) -> int:
     pass
 

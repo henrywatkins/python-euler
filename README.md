@@ -147,6 +147,10 @@ create champerdowne constant by string concatenation, then just find the product
 
 for a set of lists of digits from 3 to n, loop through the lexicographic permutations and check if the resultant integer is a prime by checking the number of prime factors.
 
+#### Problem 42
+
+Calculate word values then check how many are in a list of triangle numbers.
+
 #### Problem 46
 
 Use the eratosthenes sieve function to find all primes below each odd composite number, then calculate each value of the squared number to see if it is an integer (using floor(x)==x). If there are no integer values of this variable for every prime below c then it is the solution.  

@@ -221,6 +221,17 @@ def test_problem_41():
     assert biggest_pandigital_prime == 0  # 7652413
 
 
+def test_problem_42():
+    n_triangle_words = problem_42()
+    assert n_triangle_words == 162
+
+
+def test_problem_43():
+    max_digit = 4  # 10
+    pandigital_property_sum = problem_43(max_digit)
+    assert pandigital_property_sum == 22212  # 16695334890
+
+
 def test_problem_45():
     tri_pent_hex = problem_45(284)
     assert tri_pent_hex == 40755
