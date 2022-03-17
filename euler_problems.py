@@ -498,6 +498,17 @@ def problem_37(max_n: int) -> int:
     return sum(trunc_primes)
 
 
+def problem_38(max: int) -> int:
+    digits = [i for i in range(1, max)]
+    biggest = concatenate_digits(digits)
+    while lexi_permute(digits):
+        if is_pandigit_multiple(digits):
+            integer = concatenate_digits(digits)
+            if integer > biggest:
+                biggest = integer
+    return biggest
+
+
 def problem_39(max_p: int) -> int:
     max_sols = 0
     best_p = 1
@@ -521,12 +532,17 @@ def problem_40(p: int) -> int:
     return prod(digits)
 
 
-def problem_41(max_n: int) -> int:
-    for p in range(max_n, 1, -1):
-        if len(prime_factors(p)) == 1:
-            if is_pandigital(p):
-                return p
-    return 0
+def problem_41(max: int) -> int:
+    biggest = 0
+    for n in range(3, max):
+        digits = [i for i in range(1, n)]
+        while lexi_permute(digits):
+            integer = concatenate_digits(digits)
+            if len(prime_factors(integer)) == 1:
+                if integer > biggest:
+                    biggest = integer
+
+    return biggest
 
 
 def problem_45(n: int) -> int:

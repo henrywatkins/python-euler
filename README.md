@@ -131,6 +131,10 @@ Use the bin function to find binary version of number, then use reversed to chec
 
 Use eratothenes sieve to create a list of primes up to a arbitrary large number. I know there are 11 to look for so just choose the number until 11 matching primes are reached. Check for truncation by iterating over the left and right sequences of string-ified primes and check if each sub-integer is a prime.
 
+#### Problem 38
+
+Use lexicographic permutation algorithm to loop through all permutations of digits. Check for pandigital multiple by popping first n digits  off digits list and checking if the next few digits satisfy 1*y, 2* y, 3*y in a while loop. If the whole digits list is popped empty, then it is a pandigital multiple. 
+
 #### Problem 39
 
 Like problem 9 , find pythagorean triplet solutions using euclid formula. remember to remove duplicate solutions, then search for the best in range 1<=p<=1000
@@ -138,6 +142,10 @@ Like problem 9 , find pythagorean triplet solutions using euclid formula. rememb
 #### Problem 40
 
 create champerdowne constant by string concatenation, then just find the product of digits and index locations.
+
+#### Problem 41
+
+for a set of lists of digits from 3 to n, loop through the lexicographic permutations and check if the resultant integer is a prime by checking the number of prime factors.
 
 #### Problem 46
 

@@ -199,6 +199,12 @@ def test_problem_37():
     assert trunc_prime_sum == 8920
 
 
+def test_problem_38():
+    max = 4  # 10
+    largest_pandigital = problem_38(max)
+    assert largest_pandigital == 321  # 932718654
+
+
 def test_problem_39():
     n_solutions = problem_39(120)
     assert n_solutions == 120
@@ -210,9 +216,9 @@ def test_problem_40():
 
 
 def test_problem_41():
-    max_n = 999
+    max_n = 5  # 10
     biggest_pandigital_prime = problem_41(max_n)
-    assert biggest_pandigital_prime == 1982395
+    assert biggest_pandigital_prime == 0  # 7652413
 
 
 def test_problem_45():

@@ -166,6 +166,41 @@ def is_pandigital(n: int) -> bool:
     return all([digits.count(i + 1) == 1 for i, dig in enumerate(digits)])
 
 
+def is_pandigit_multiple(x: List[int]) -> bool:
+    """check if an integer is a pandigital multiple"""
+    for n in range(1, 5):
+        if n_digit_panmultiple(x, n):
+            return True
+    return False
+
+
+def n_digit_panmultiple(x: List[int], n: int) -> bool:
+    """check if an integer is a pandigital multiple where the first n digits
+    concatenate to the start or origin integer"""
+    y = x.copy()
+    n_digits = n
+    i = 1
+    start_digits = [y.pop(0) for i in range(n_digits)]
+    start_integer = concatenate_digits(start_digits)
+    while y:
+        i += 1
+        next_integer = i * start_integer
+        n_digits = floor(log10(next_integer)) + 1
+        if len(y) < n_digits:
+            return False
+        digits_to_check = [y.pop(0) for i in range(n_digits)]
+        integer_to_check = concatenate_digits(digits_to_check)
+        if integer_to_check != next_integer:
+            return False
+    return True
+
+
+def concatenate_digits(digits: List[int]) -> int:
+    """concatentate a list of integers into a single integer"""
+    string_int = "".join([str(i) for i in digits])
+    return int(string_int)
+
+
 def shift(key, array):
     """rotate the array right by key steps"""
     return array[-key:] + array[:-key]
