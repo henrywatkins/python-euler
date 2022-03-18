@@ -180,6 +180,16 @@ def is_pandigit_multiple(x: List[int]) -> bool:
     return False
 
 
+def is_pentagonal(x: int) -> bool:
+    val = (sqrt(24 * x + 1) + 1) / 6
+    return floor(val) == val
+
+
+def is_hexagonal(x: int) -> bool:
+    val = (sqrt(8 * x + 1) + 1) / 4
+    return floor(val) == val
+
+
 def n_digit_panmultiple(x: List[int], n: int) -> bool:
     """check if an integer is a pandigital multiple where the first n digits
     concatenate to the start or origin integer"""

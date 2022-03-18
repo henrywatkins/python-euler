@@ -151,6 +151,18 @@ for a set of lists of digits from 3 to n, loop through the lexicographic permuta
 
 Calculate word values then check how many are in a list of triangle numbers.
 
+#### Problem 43
+
+Again loop through the lexicographical permutations and search for those with the required properties. 
+
+#### Problem 44
+
+Likely a much more elegant solution, but I just searched through the pairs of pentagonal numbers, (lower triangular) and checked if the sum and difference were also pentagonal.
+
+#### Problem 45
+
+Again simply loop through the triangle numbers up to some specified max, checking each for pentagonal and hexagonal numberness.
+
 #### Problem 46
 
 Use the eratosthenes sieve function to find all primes below each odd composite number, then calculate each value of the squared number to see if it is an integer (using floor(x)==x). If there are no integer values of this variable for every prime below c then it is the solution.  

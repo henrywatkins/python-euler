@@ -232,9 +232,16 @@ def test_problem_43():
     assert pandigital_property_sum == 22212  # 16695334890
 
 
+def test_problem_44():
+    max_N = 100  # 10000
+    min_pentagonal_difference = problem_44(max_N)
+    assert min_pentagonal_difference == 100000000  # 5482660
+
+
 def test_problem_45():
-    tri_pent_hex = problem_45(284)
-    assert tri_pent_hex == 40755
+    max_n = 1000000
+    tri_pent_hex = problem_45(max_n)
+    assert tri_pent_hex == 1533776805
 
 
 def test_problem_46():

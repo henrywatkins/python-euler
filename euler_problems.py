@@ -574,8 +574,27 @@ def problem_43(max_digit: int) -> int:
     return sum(has_property)
 
 
-def problem_45(n: int) -> int:
-    pass
+def problem_44(max: int) -> int:
+    smallest = 100000000
+    for a in range(1, max):
+        pa = a * (3 * a - 1) // 2
+        for b in range(1, a):
+            pb = b * (3 * b - 1) // 2
+            pentsum = pb + pa
+            diff = abs(pa - pb)
+            if is_pentagonal(pentsum) and is_pentagonal(diff):
+                if diff < smallest:
+                    smallest = diff
+    return smallest
+
+
+def problem_45(max_n: int) -> int:
+    start = 286
+    for i in range(start, max_n):
+        tri = i * (i + 1) // 2
+        if is_pentagonal(tri) and is_hexagonal(tri):
+            return tri
+    return 40755
 
 
 def problem_46() -> int:
