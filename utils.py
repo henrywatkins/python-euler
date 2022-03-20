@@ -111,9 +111,15 @@ def euler_totient(n: int) -> int:
 
 def is_permutation(a: int, b: int) -> bool:
     """check if a is a permuation of b"""
-    string_a = [i for i in str(a)]
-    string_b = [i for i in str(b)]
-    return all([string_a.count(i) == string_b.count(i) for i in range(0, 10)])
+    digits_a = digits(a)
+    digits_b = digits(b)
+    return all([digits_a.count(i) == digits_b.count(i) for i in range(0, 10)])
+
+
+def digits(x: int) -> int:
+    """return the decimal digits of an integer"""
+    length = floor(log10(x)) + 1
+    return list(reversed([floor((x / 10 ** i) % 10) for i in range(length)]))
 
 
 def num_divisors(n: int) -> int:
@@ -178,6 +184,12 @@ def is_pandigit_multiple(x: List[int]) -> bool:
         if n_digit_panmultiple(x, n):
             return True
     return False
+
+
+def is_dec_palindrome(x: int) -> bool:
+    """check if an integer is a decimal palindrome"""
+    digits_ = digits(x)
+    return digits_ == digits_[::-1]
 
 
 def is_pentagonal(x: int) -> bool:

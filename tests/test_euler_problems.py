@@ -259,9 +259,15 @@ def test_problem_48():
     assert sum_self_powers == 10405071317
 
 
+def test_problem_49():
+    digit_permuatation = problem_49()
+    assert digit_permuatation == 296962999629
+
+
 def test_problem_50():
-    longest_sum_prime = problem_50(1000)
-    assert longest_sum_prime == 41
+    max_n = 1000  # 1000000
+    longest_sum_prime = problem_50(max_n)
+    assert longest_sum_prime == 953  # 997651
 
 
 def test_problem_52():
@@ -273,6 +279,12 @@ def test_problem_53():
     N = 100
     n_more_than_mil = problem_53(N)
     assert n_more_than_mil == 4
+
+
+def test_problem_55():
+    max_n = 10000
+    n_lychrel_numbers = problem_55(max_n)
+    assert n_lychrel_numbers == 120
 
 
 def test_problem_56():

@@ -626,15 +626,43 @@ def problem_48(n: int) -> int:
     return self_power_sum
 
 
+def problem_49() -> int:
+    digit_primes = [i for i in primes_to(9999) if i > 999]
+    sequences = []
+    for k, p1 in enumerate(digit_primes):
+        this_prime = [p1]
+        for p2 in digit_primes[k + 1 :]:
+            if is_permutation(p2, p1):
+                this_prime.append(p2)
+        sequences.append(this_prime)
+    for sequence in sequences:
+        if len(sequence) == 3:
+            print(sequence)
+            diff1 = sequence[1] - sequence[0]
+            diff2 = sequence[2] - sequence[1]
+            if diff1 == diff2:
+                return concatenate_digits(sequence)
+    return 0
+
+
 def problem_50(max_n: int) -> int:
     primes_below = primes_to(max_n - 1)
     rolling_sum = []
-    last_val = 0
-    for i in primes_below:
-        last_val += i
-        if last_val in primes_below:
-            rolling_sum.append(last_val)
-    best_prime = max(rolling_sum)
+    best_prime = 0
+    max_length = 0
+    n_primes = len(primes_below)
+    for l in range(n_primes):
+        partition_sum = 0
+        r = l + 1
+        while partition_sum < primes_below[-1]:
+            partition = primes_below[l:r]
+            partition_sum = sum(partition)
+            if len(prime_factors(partition_sum)) == 1:
+                partition_length = len(partition)
+                if partition_length > max_length:
+                    max_length = partition_length
+                    best_prime = partition_sum
+            r += 1
     return best_prime
 
 
@@ -658,6 +686,21 @@ def problem_53(M: int) -> int:
             if comb > 1000000:
                 more_than_mil.append(comb)
     return len(more_than_mil)
+
+
+def problem_55(max_n: int) -> int:
+    n_lychrels = max_n
+    for i in range(1, max_n):
+        iterate = 0
+        while iterate < 50:
+            reverse_i = concatenate_digits(reversed(digits(i)))
+            reverseadd = reverse_i + i
+            if is_dec_palindrome(reverseadd):
+                n_lychrels -= 1
+                break
+            iterate += 1
+
+    return n_lychrels
 
 
 def problem_56(max: int) -> int:

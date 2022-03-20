@@ -175,6 +175,14 @@ create a list of consecutive numbers, find their prime factors then check the le
 
 Use binary exponentiation to find large self powers, then sum up 
 
+#### Problem 49
+
+Find all primes with four digits, then for each prime, look for primes > current prime that are a permutation of the current prime. Then check for the sequences that have three elements and are arithmetic sequences.
+
+#### Problem 50
+
+Find all primes below max, then for each starting prime, find the sum of gradually increasing partitions until the partition sum is more than the last prime (use a while loop). then simply check each partition for its length and prime value sum. Return the longest
+
 #### Problem 52
 
 while loop iterating up through the positive numbers, look at a sorted list of digits, and check if all the sorted digit lists of all multiples are equal
