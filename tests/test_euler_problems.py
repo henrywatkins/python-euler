@@ -336,6 +336,9 @@ def test_problem_74():
     n_chains_60_terms = problem_74(max)
     assert n_chains_60_terms == 23
 
+def test_problem_79():
+    passcode = problem_79()
+    assert passcode==124988
 
 def test_problem_92():
     n_below = problem_92(100)
@@ -345,3 +348,7 @@ def test_problem_92():
 def test_problem_97():
     last_ten_digits = problem_97()
     assert last_ten_digits == 1907825665
+
+def test_problem_99():
+    largest_value_line = problem_99()
+    assert largest_value_line==708

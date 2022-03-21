@@ -859,6 +859,15 @@ def problem_74(max: int) -> int:
 
     return n_chains
 
+def problem_79()->str:
+    logins = [i[0] for i in read_txt_lines("assets/p079_keylog.txt")]
+    try_val = 100
+    while try_val<150:
+        string_val = str(try_val)
+        consistent = [all([digit in string_val for digit in login]) for login in logins]
+        if all(consistent):
+            return try_val
+        try_val+=1
 
 def problem_92(max_n: int) -> int:
     n_to_89 = 0
@@ -881,3 +890,17 @@ def problem_97():
     exponent = 783
     n = 1 + coef * 2 ** exponent
     return int(str(n)[-10:])
+
+
+def problem_99()->int:
+    data = read_txt_lines("assets/p099_base_exp.txt")
+    bases, exps = zip(*data)
+    base_ints, exps_ints = [int(s) for s in bases], [int(s) for s in exps]
+    logs = [b*log10(a) for a, b in zip(base_ints, exps_ints)]
+    max_idx = 0
+    max_val = 0
+    for i, val in enumerate(logs):
+        if val>max_val:
+            max_val = val
+            max_idx = i
+    return max_idx

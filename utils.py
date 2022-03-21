@@ -13,11 +13,16 @@ class Node:
         self.right = None
 
 
-def read_txt(filename: str):
+def read_txt(filename: str)->List[str]:
     with open(filename, "r") as file:
         output = file.read()
     return output.replace('"', "").split(",")
 
+def read_txt_lines(filename:str)->List[List[str]]:
+    with open(filename, "r") as file:
+        output = file.readlines()
+    stripped = [s.strip("\n").split(",") for s in output]
+    return stripped
 
 def prime_factors(n: int) -> List[int]:
     """Calculate prime factors of integer"""

@@ -258,3 +258,14 @@ use modulo
 $$
 D_n(x) = \lfloor (x/10^{n-1}) \mod 10  \rfloor
 $$
+
+#### Problem 99
+
+Just calculate the biggest logarithm since if 
+$$
+a^b > c^d
+$$
+then 
+$$
+b \log(a) > d\log(c)
+$$
