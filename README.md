@@ -204,6 +204,14 @@ k_n = a_n k_{n-1} + h_{n-2}
 $$
 For the numerator and denominator of the nth rational approximation respectively.
 
+#### Problem 58
+
+Use the code from problem 28, however this time, while loop until the number of primes on the diagonals crosses a threshold. Use prime factor function to determine primeness.
+
+#### Problem 59
+
+Use `ord` and `chr` functions to convert between ascii codes and characters. use the bitwise xor `^` to do coding/decoding. Convert possible 3-letter keys into ascii codes and decode the encrypted message. Check if the decrypted message contains very common english words (I chose "the", "to", "for", "of"). If the message contains all these strings it is most likely the original message and the corresponding key the correct key.
+
 #### Problem 63
 
 Use fact that the number of digits in decimal number can be found with log

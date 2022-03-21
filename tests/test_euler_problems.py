@@ -297,6 +297,17 @@ def test_problem_57():
     assert n_bigger_numerators == 1
 
 
+def test_problem_58():
+    thresh = 0.4  # 0.1
+    side_length = problem_58(thresh)
+    assert side_length == 31  # 26241
+
+
+def test_problem_59():
+    ascii_value_sum = problem_59()
+    assert ascii_value_sum == 129448
+
+
 def test_problem_63():
     n_digit_n_power_count = problem_63(100)
     assert n_digit_n_power_count == 49

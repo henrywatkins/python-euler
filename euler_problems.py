@@ -733,6 +733,49 @@ def problem_57(max_exp: int) -> int:
     return n_more_numerators
 
 
+def problem_58(proportion_threshold: float) -> int:
+    n_diagonals = 1
+    n_prime_diagonals = 0
+    last_diag = 1
+    prime_proportion = 1.0
+    layer_width = 3
+    layer_max = layer_width ** 2
+    while prime_proportion > proportion_threshold:
+        last_diag += layer_width - 1
+        n_diagonals += 1
+        if len(prime_factors(last_diag)) == 1:
+            n_prime_diagonals += 1
+        if last_diag == layer_max:
+            layer_width += 2
+            layer_max = layer_width ** 2
+        prime_proportion = n_prime_diagonals / n_diagonals
+
+    return layer_width
+
+
+def problem_59() -> int:
+    encrypted_text = read_txt("assets/p059_cipher.txt")
+    encrypted_ascii_ints = [int(i) for i in encrypted_text]
+    encrypted_text = "".join([chr(i) for i in encrypted_ascii_ints])
+    latin_lowercase_letters = "exp"  # "abcdefghijklmnopqrstuvwxyz"
+    common_words = ["the", "to", "for", "of"]
+    for i in latin_lowercase_letters:
+        for j in latin_lowercase_letters:
+            for k in latin_lowercase_letters:
+                key = i + j + k
+                ascii_key = [ord(c) for c in key]
+                decrypted_ints = [
+                    code ^ ascii_key[idx % len(ascii_key)]
+                    for idx, code in enumerate(encrypted_ascii_ints)
+                ]
+                decrypted_text = "".join([chr(i) for i in decrypted_ints])
+                if all([w in decrypted_text for w in common_words]):
+                    print(f"key: {key}\ndecoded message: {decrypted_text}")
+                    return sum(decrypted_ints)
+
+    return 0
+
+
 def problem_63(max_p: int) -> int:
     counts = 0
     for p in range(1, max_p):
